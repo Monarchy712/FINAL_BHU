@@ -10,6 +10,8 @@ import Enthusiasts from './pages/Enthusiasts';
 import GuidedTourPage from './pages/GuidedTourPage';
 import SpatialGlobe from './pages/SpatialGlobe';
 import IntensityGlobe from './pages/IntensityGlobe';
+import Cities from './pages/Cities';
+import ClimateLandscape from './pages/ClimateLandscape';
 
 export type ActiveMode = 'researchers' | 'enthusiasts' | null;
 
@@ -120,6 +122,30 @@ function App() {
               className="relative z-50 w-full h-screen"
             >
               <IntensityGlobe />
+            </motion.div>
+          } />
+          <Route path="/cities" element={
+            <motion.div 
+              key="cities"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative z-50"
+            >
+              <Cities />
+            </motion.div>
+          } />
+          <Route path="/landscape" element={
+            <motion.div 
+              key="landscape"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative z-50"
+            >
+              <ClimateLandscape />
             </motion.div>
           } />
         </Routes>

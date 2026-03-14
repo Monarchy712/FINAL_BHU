@@ -1,0 +1,2432 @@
+[
+  {
+    "city": "'S Gravenjansdijk",
+    "country": "Belgium",
+    "avg_temp": 14.3,
+    "avg_press": 1016.9,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "'S Gravenjansdyk",
+    "country": "Belgium",
+    "avg_temp": 16.3,
+    "avg_press": 1015.8,
+    "avg_precip": 1402.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "'S Gravenstaffel",
+    "country": "Belgium",
+    "avg_temp": 15.6,
+    "avg_press": 1011.4,
+    "avg_precip": 1664.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "'S-Gravenbrakel",
+    "country": "Belgium",
+    "avg_temp": 8.3,
+    "avg_press": 1011.9,
+    "avg_precip": 788.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "-Kingdom",
+    "country": "\u706b\u9e21",
+    "avg_temp": 29.7,
+    "avg_press": 1003.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "avg_temp": 32.5,
+    "avg_press": 1008.3,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Abuja",
+    "country": "Nigeria",
+    "avg_temp": 27.4,
+    "avg_press": 1014.0,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Accra",
+    "country": "Ghana",
+    "avg_temp": 27.4,
+    "avg_press": 1012.7,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Addis Ababa",
+    "country": "Ethiopia",
+    "avg_temp": 19.7,
+    "avg_press": 1023.3,
+    "avg_precip": 2102.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Addis Abeba",
+    "country": "Ethiopia",
+    "avg_temp": 19.8,
+    "avg_press": 1011.0,
+    "avg_precip": 2978.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Adkip",
+    "country": "Palau",
+    "avg_temp": 26.5,
+    "avg_press": 1011.4,
+    "avg_precip": 1577.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Aguaray",
+    "country": "Paraguay",
+    "avg_temp": 23.3,
+    "avg_press": 1008.9,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Airai",
+    "country": "Palau",
+    "avg_temp": 28.1,
+    "avg_press": 1008.6,
+    "avg_precip": 3679.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Algiers",
+    "country": "Algeria",
+    "avg_temp": 20.9,
+    "avg_press": 1017.0,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Amman",
+    "country": "Jordan",
+    "avg_temp": 21.9,
+    "avg_press": 1016.5,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "avg_temp": 12.5,
+    "avg_press": 1014.7,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Andorra La Vella",
+    "country": "Andorra",
+    "avg_temp": 9.3,
+    "avg_press": 1017.7,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Ankara",
+    "country": "Turkey",
+    "avg_temp": 16.1,
+    "avg_press": 1016.9,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Antananarivo",
+    "country": "Madagascar",
+    "avg_temp": 24.0,
+    "avg_press": 1020.6,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Apia",
+    "country": "Samoa",
+    "avg_temp": 25.9,
+    "avg_press": 1011.3,
+    "avg_precip": 2803.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Ar Riyadh",
+    "country": "Saudi Arabien",
+    "avg_temp": 45.0,
+    "avg_press": 997.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Ashgabat",
+    "country": "Turkmenistan",
+    "avg_temp": 22.5,
+    "avg_press": 1015.5,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Asmara",
+    "country": "Eritrea",
+    "avg_temp": 21.2,
+    "avg_press": 1013.9,
+    "avg_precip": 964.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Astana",
+    "country": "Kazakhstan",
+    "avg_temp": 8.1,
+    "avg_press": 1017.9,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Asuncion",
+    "country": "Paraguay",
+    "avg_temp": 13.7,
+    "avg_press": 1020.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Athens",
+    "country": "Greece",
+    "avg_temp": 22.2,
+    "avg_press": 1015.4,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Aurora",
+    "country": "Paraguay",
+    "avg_temp": 19.7,
+    "avg_press": 1012.6,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Bafoussam",
+    "country": "Cameroon",
+    "avg_temp": 22.7,
+    "avg_press": 1012.9,
+    "avg_precip": 5782.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Baghdad",
+    "country": "Iraq",
+    "avg_temp": 29.0,
+    "avg_press": 1011.0,
+    "avg_precip": 88.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Baku",
+    "country": "Azerbaijan",
+    "avg_temp": 19.0,
+    "avg_press": 1016.4,
+    "avg_precip": 263.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Bali",
+    "country": "Indonesia",
+    "avg_temp": 29.3,
+    "avg_press": 1007.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Bamako",
+    "country": "Mali",
+    "avg_temp": 26.5,
+    "avg_press": 1014.2,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Ban Lom",
+    "country": "Vietnam",
+    "avg_temp": 26.3,
+    "avg_press": 1008.6,
+    "avg_precip": 2540.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Bandar Seri Begawan",
+    "country": "Brunei Darussalam",
+    "avg_temp": 29.3,
+    "avg_press": 1008.1,
+    "avg_precip": 4468.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Bangkok",
+    "country": "Thailand",
+    "avg_temp": 31.5,
+    "avg_press": 1007.7,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Bangui",
+    "country": "Central African Republic",
+    "avg_temp": 28.2,
+    "avg_press": 1012.8,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Banjul",
+    "country": "Gambia",
+    "avg_temp": 25.1,
+    "avg_press": 1012.2,
+    "avg_precip": 1226.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Basseterre",
+    "country": "Saint Kitts and Nevis",
+    "avg_temp": 26.7,
+    "avg_press": 1014.6,
+    "avg_precip": 1226.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Beijing",
+    "country": "China",
+    "avg_temp": 17.6,
+    "avg_press": 1015.1,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Beijing Shi",
+    "country": "China",
+    "avg_temp": 24.3,
+    "avg_press": 1006.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Beirut",
+    "country": "Lebanon",
+    "avg_temp": 23.6,
+    "avg_press": 1014.7,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Beirut",
+    "country": "\u041f\u043e\u043b\u044c\u0448\u0430",
+    "avg_temp": 24.2,
+    "avg_press": 1013.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Belgrade",
+    "country": "Serbia",
+    "avg_temp": 15.6,
+    "avg_press": 1017.4,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Belmopan",
+    "country": "Belize",
+    "avg_temp": 22.2,
+    "avg_press": 1013.3,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Berlin",
+    "country": "Germany",
+    "avg_temp": 12.1,
+    "avg_press": 1015.8,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Bern",
+    "country": "B\u00e9lgica",
+    "avg_temp": 17.4,
+    "avg_press": 1013.0,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Bern",
+    "country": "Switzerland",
+    "avg_temp": 11.3,
+    "avg_press": 1017.1,
+    "avg_precip": 1402.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Bishkek",
+    "country": "Kyrghyzstan",
+    "avg_temp": 16.8,
+    "avg_press": 1017.4,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Bissau",
+    "country": "Guinea-Bissau",
+    "avg_temp": 25.5,
+    "avg_press": 1012.4,
+    "avg_precip": 2540.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Bogot",
+    "country": "Bulgaria",
+    "avg_temp": 17.4,
+    "avg_press": 1017.5,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Bogot",
+    "country": "Hungary",
+    "avg_temp": 3.3,
+    "avg_press": 1014.2,
+    "avg_precip": 701.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Bogota",
+    "country": "Colombia",
+    "avg_temp": 13.5,
+    "avg_press": 1019.0,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Bras",
+    "country": "Brazil",
+    "avg_temp": 24.3,
+    "avg_press": 1010.4,
+    "avg_precip": 1664.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Bratislava",
+    "country": "Slovakia",
+    "avg_temp": 13.4,
+    "avg_press": 1017.3,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Brazzaville",
+    "country": "Congo",
+    "avg_temp": 26.7,
+    "avg_press": 1014.3,
+    "avg_precip": 1226.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Bridgetown",
+    "country": "Barbados",
+    "avg_temp": 27.1,
+    "avg_press": 1012.6,
+    "avg_precip": 1314.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Brussels",
+    "country": "Belgium",
+    "avg_temp": 12.4,
+    "avg_press": 1015.6,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Bucharest",
+    "country": "Romania",
+    "avg_temp": 15.8,
+    "avg_press": 1017.6,
+    "avg_precip": 438.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Budapest",
+    "country": "Hungary",
+    "avg_temp": 14.2,
+    "avg_press": 1017.2,
+    "avg_precip": 526.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "avg_temp": 14.9,
+    "avg_press": 1015.9,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Bujumbura",
+    "country": "Burundi",
+    "avg_temp": 26.0,
+    "avg_press": 1014.6,
+    "avg_precip": 1664.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Cairo",
+    "country": "Egypt",
+    "avg_temp": 25.8,
+    "avg_press": 1014.1,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Canberra",
+    "country": "Australia",
+    "avg_temp": 15.0,
+    "avg_press": 1016.9,
+    "avg_precip": 964.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Caracas",
+    "country": "Venezuela",
+    "avg_temp": 23.2,
+    "avg_press": 1013.2,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Carreria",
+    "country": "Paraguay",
+    "avg_temp": 28.6,
+    "avg_press": 1013.5,
+    "avg_precip": 876.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Castries",
+    "country": "Saint Lucia",
+    "avg_temp": 27.1,
+    "avg_press": 1013.4,
+    "avg_precip": 1314.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Chi Chi Khvar",
+    "country": "Iran",
+    "avg_temp": 16.9,
+    "avg_press": 1013.3,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Chi-Chi-Erh",
+    "country": "Russia",
+    "avg_temp": -17.5,
+    "avg_press": 1034.9,
+    "avg_precip": 175.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Polar"
+  },
+  {
+    "city": "City Of San Marino",
+    "country": "San Marino",
+    "avg_temp": 31.3,
+    "avg_press": 1009.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Colombo",
+    "country": "Sri Lanka",
+    "avg_temp": 30.1,
+    "avg_press": 1008.8,
+    "avg_precip": 3767.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Conakry",
+    "country": "Guinea",
+    "avg_temp": 26.3,
+    "avg_press": 1012.1,
+    "avg_precip": 3504.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "avg_temp": 11.1,
+    "avg_press": 1014.5,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Costa Rica",
+    "country": "\u0643\u0648\u0644\u0648\u0645\u0628\u064a\u0627",
+    "avg_temp": 23.1,
+    "avg_press": 1017.0,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Dakar",
+    "country": "Senegal",
+    "avg_temp": 24.7,
+    "avg_press": 1012.8,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Damascus",
+    "country": "Syria",
+    "avg_temp": 22.1,
+    "avg_press": 1014.7,
+    "avg_precip": 175.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Dhaka",
+    "country": "Bangladesh",
+    "avg_temp": 30.8,
+    "avg_press": 1006.1,
+    "avg_precip": 2540.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Dhidhdhoo",
+    "country": "Maldives",
+    "avg_temp": 27.8,
+    "avg_press": 1009.6,
+    "avg_precip": 1927.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Dili",
+    "country": "Timor-Leste",
+    "avg_temp": 26.4,
+    "avg_press": 1009.3,
+    "avg_precip": 3329.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Djibouti",
+    "country": "Djibouti",
+    "avg_temp": 31.5,
+    "avg_press": 1010.0,
+    "avg_precip": 263.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Dodoma",
+    "country": "Tanzania",
+    "avg_temp": 25.6,
+    "avg_press": 1017.3,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Doha",
+    "country": "Qatar",
+    "avg_temp": 32.4,
+    "avg_press": 1008.7,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Douala",
+    "country": "Cameroon",
+    "avg_temp": 25.6,
+    "avg_press": 1012.1,
+    "avg_precip": 1752.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Dublin",
+    "country": "Ireland",
+    "avg_temp": 11.1,
+    "avg_press": 1012.3,
+    "avg_precip": 1226.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Dushanbe",
+    "country": "Tajikistan",
+    "avg_temp": 22.5,
+    "avg_press": 1016.1,
+    "avg_precip": 526.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Felidhoo",
+    "country": "Maldives",
+    "avg_temp": 28.8,
+    "avg_press": 1009.7,
+    "avg_precip": 2891.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Freetown",
+    "country": "Sierra Leone",
+    "avg_temp": 26.0,
+    "avg_press": 1012.6,
+    "avg_precip": 4292.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Funafuti",
+    "country": "Tuvalu",
+    "avg_temp": 28.7,
+    "avg_press": 1009.3,
+    "avg_precip": 3241.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Gaborone",
+    "country": "Botswana",
+    "avg_temp": 23.4,
+    "avg_press": 1019.9,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Garrapata",
+    "country": "Paraguay",
+    "avg_temp": 21.5,
+    "avg_press": 1011.3,
+    "avg_precip": 526.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Georgetown",
+    "country": "Guyana",
+    "avg_temp": 24.6,
+    "avg_press": 1011.7,
+    "avg_precip": 3942.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Grenada",
+    "country": "USA United States of America",
+    "avg_temp": 28.2,
+    "avg_press": 1015.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Grindavik",
+    "country": "Iceland",
+    "avg_temp": 8.9,
+    "avg_press": 1011.4,
+    "avg_precip": 1314.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Guatemala City",
+    "country": "Guatemala",
+    "avg_temp": 17.1,
+    "avg_press": 1020.5,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "avg_temp": 27.1,
+    "avg_press": 1009.7,
+    "avg_precip": 2540.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Harare",
+    "country": "Zimbabwe",
+    "avg_temp": 23.4,
+    "avg_press": 1016.5,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Havana",
+    "country": "Cuba",
+    "avg_temp": 22.7,
+    "avg_press": 1016.2,
+    "avg_precip": 263.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Helsinki",
+    "country": "Finland",
+    "avg_temp": 8.8,
+    "avg_press": 1012.5,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "avg_temp": 26.6,
+    "avg_press": 1008.0,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Honiara",
+    "country": "Solomon Islands",
+    "avg_temp": 27.1,
+    "avg_press": 1009.1,
+    "avg_precip": 3504.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Islamabad",
+    "country": "Pakistan",
+    "avg_temp": 28.2,
+    "avg_press": 1008.2,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Ivory",
+    "country": "Madagascar",
+    "avg_temp": 28.6,
+    "avg_press": 1015.8,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Ivory Ivory Ban",
+    "country": "Mal\u00e1sia",
+    "avg_temp": 24.3,
+    "avg_press": 1009.0,
+    "avg_precip": 13578.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Jakarta",
+    "country": "Indonesia",
+    "avg_temp": 30.0,
+    "avg_press": 1007.6,
+    "avg_precip": 2716.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Jerusalem",
+    "country": "Israel",
+    "avg_temp": 24.0,
+    "avg_press": 1013.5,
+    "avg_precip": 88.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Juba",
+    "country": "Sudan",
+    "avg_temp": 28.3,
+    "avg_press": 1012.4,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Kabul",
+    "country": "Afghanistan",
+    "avg_temp": 19.1,
+    "avg_press": 1011.4,
+    "avg_precip": 263.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Kampala",
+    "country": "Uganda",
+    "avg_temp": 25.4,
+    "avg_press": 1016.1,
+    "avg_precip": 1226.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Kathmandu",
+    "country": "Nepal",
+    "avg_temp": 22.8,
+    "avg_press": 1013.7,
+    "avg_precip": 4117.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Khartoum",
+    "country": "Sudan",
+    "avg_temp": 31.3,
+    "avg_press": 1010.9,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Kigali",
+    "country": "Rwanda",
+    "avg_temp": 24.0,
+    "avg_press": 1020.4,
+    "avg_precip": 1577.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Kingston",
+    "country": "Jamaica",
+    "avg_temp": 26.2,
+    "avg_press": 1013.1,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Kingstown",
+    "country": "Saint Vincent and the Grenadines",
+    "avg_temp": 27.3,
+    "avg_press": 1013.2,
+    "avg_precip": 1314.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Kingstown",
+    "country": "Saint-Vincent-et-les-Grenadines",
+    "avg_temp": 27.8,
+    "avg_press": 1017.0,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Kinshasa",
+    "country": "Democratic Republic of Congo",
+    "avg_temp": 26.7,
+    "avg_press": 1014.4,
+    "avg_precip": 1226.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Kiyabo",
+    "country": "Philippines",
+    "avg_temp": 30.3,
+    "avg_press": 1007.0,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Koror",
+    "country": "Palau",
+    "avg_temp": 28.7,
+    "avg_press": 1007.9,
+    "avg_precip": 4030.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Krasnyy Turkmenistan",
+    "country": "Turkm\u00e9nistan",
+    "avg_temp": 37.8,
+    "avg_press": 998.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Kuala Lumpur",
+    "country": "Malaysia",
+    "avg_temp": 30.2,
+    "avg_press": 1007.9,
+    "avg_precip": 5168.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Kuwait",
+    "country": "Kuwait",
+    "avg_temp": 44.4,
+    "avg_press": 993.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Kuwait City",
+    "country": "Kuwait",
+    "avg_temp": 31.2,
+    "avg_press": 1009.7,
+    "avg_precip": 88.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Kyiv",
+    "country": "Ukraine",
+    "avg_temp": 12.3,
+    "avg_press": 1017.5,
+    "avg_precip": 438.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Laos",
+    "country": "Indonesia",
+    "avg_temp": 26.2,
+    "avg_press": 1009.4,
+    "avg_precip": 5869.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Libreville",
+    "country": "Gabon",
+    "avg_temp": 26.9,
+    "avg_press": 1012.7,
+    "avg_precip": 1664.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Lilongwe",
+    "country": "Malawi",
+    "avg_temp": 24.3,
+    "avg_press": 1019.4,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Lima",
+    "country": "Peru",
+    "avg_temp": 17.8,
+    "avg_press": 1013.1,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Lisbon",
+    "country": "Portugal",
+    "avg_temp": 17.2,
+    "avg_press": 1017.3,
+    "avg_precip": 964.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Ljubljana",
+    "country": "Slovenia",
+    "avg_temp": 13.2,
+    "avg_press": 1017.4,
+    "avg_precip": 1840.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Lom",
+    "country": "Bulgaria",
+    "avg_temp": 10.4,
+    "avg_press": 1016.5,
+    "avg_precip": 1051.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Lom",
+    "country": "Russia",
+    "avg_temp": 22.5,
+    "avg_press": 1011.9,
+    "avg_precip": 613.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Lome",
+    "country": "Togo",
+    "avg_temp": 27.9,
+    "avg_press": 1011.0,
+    "avg_precip": 1402.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "London",
+    "country": "United Kingdom",
+    "avg_temp": 12.5,
+    "avg_press": 1014.4,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Luanda",
+    "country": "Angola",
+    "avg_temp": 26.1,
+    "avg_press": 1012.8,
+    "avg_precip": 263.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Lusaka",
+    "country": "Zambia",
+    "avg_temp": 24.5,
+    "avg_press": 1015.4,
+    "avg_precip": 964.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Luxembourg",
+    "country": "Luxembourg",
+    "avg_temp": 10.9,
+    "avg_press": 1016.1,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Madrid",
+    "country": "Spain",
+    "avg_temp": 16.1,
+    "avg_press": 1018.0,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Majuro",
+    "country": "Marshall Islands",
+    "avg_temp": 28.2,
+    "avg_press": 1009.6,
+    "avg_precip": 2540.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Malabo",
+    "country": "Equatorial Guinea",
+    "avg_temp": 27.1,
+    "avg_press": 1013.3,
+    "avg_precip": 2978.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Male",
+    "country": "Maldives",
+    "avg_temp": 28.8,
+    "avg_press": 1007.0,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Managua",
+    "country": "Nicaragua",
+    "avg_temp": 24.1,
+    "avg_press": 1011.2,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Manama",
+    "country": "Bahrain",
+    "avg_temp": 30.1,
+    "avg_press": 1009.4,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Manila",
+    "country": "Philippines",
+    "avg_temp": 30.0,
+    "avg_press": 1008.4,
+    "avg_precip": 3329.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Maputo",
+    "country": "Mozambique",
+    "avg_temp": 25.9,
+    "avg_press": 1017.6,
+    "avg_precip": 526.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Maseru",
+    "country": "Lesotho",
+    "avg_temp": 19.6,
+    "avg_press": 1020.9,
+    "avg_precip": 526.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Mbabane",
+    "country": "Swaziland",
+    "avg_temp": 22.0,
+    "avg_press": 1019.7,
+    "avg_precip": 526.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Melbourne",
+    "country": "Australia",
+    "avg_temp": 11.6,
+    "avg_press": 1014.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Mexico (Grupo Mexico)",
+    "country": "Mexique",
+    "avg_temp": 27.4,
+    "avg_press": 1013.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Mexico City",
+    "country": "Mexico",
+    "avg_temp": 14.4,
+    "avg_press": 1024.9,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Meyungs",
+    "country": "Palau",
+    "avg_temp": 27.0,
+    "avg_press": 1010.2,
+    "avg_precip": 2190.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Minsk",
+    "country": "Belarus",
+    "avg_temp": 9.7,
+    "avg_press": 1015.7,
+    "avg_precip": 701.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Mogadishu",
+    "country": "Somalia",
+    "avg_temp": 28.8,
+    "avg_press": 1012.7,
+    "avg_precip": 263.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Moldova",
+    "country": "Pol\u00f4nia",
+    "avg_temp": 27.7,
+    "avg_press": 1010.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Mombasa",
+    "country": "Kenya",
+    "avg_temp": 26.8,
+    "avg_press": 1014.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Monaco",
+    "country": "Monaco",
+    "avg_temp": 18.0,
+    "avg_press": 1015.0,
+    "avg_precip": 964.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Monrovia",
+    "country": "Liberia",
+    "avg_temp": 26.0,
+    "avg_press": 1012.5,
+    "avg_precip": 3066.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Montevideo",
+    "country": "Uruguay",
+    "avg_temp": 14.4,
+    "avg_press": 1016.3,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Morocco City",
+    "country": "Marrocos",
+    "avg_temp": 40.3,
+    "avg_press": 1010.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Moroni",
+    "country": "Comoros",
+    "avg_temp": 26.4,
+    "avg_press": 1015.2,
+    "avg_precip": 2278.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Moroni",
+    "country": "Komoren",
+    "avg_temp": 25.2,
+    "avg_press": 1017.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Moroni",
+    "country": "USA United States of America",
+    "avg_temp": 18.2,
+    "avg_press": 1015.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Moscow",
+    "country": "Russia",
+    "avg_temp": 9.5,
+    "avg_press": 1014.9,
+    "avg_precip": 788.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Muscat",
+    "country": "Oman",
+    "avg_temp": 31.5,
+    "avg_press": 1008.2,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "N'djamena",
+    "country": "Chad",
+    "avg_temp": 29.4,
+    "avg_press": 1011.6,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Nairobi",
+    "country": "Kenya",
+    "avg_temp": 21.9,
+    "avg_press": 1022.7,
+    "avg_precip": 964.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Nan",
+    "country": "Thailand",
+    "avg_temp": 30.0,
+    "avg_press": 1008.1,
+    "avg_precip": 2803.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Nassau",
+    "country": "Bahamas",
+    "avg_temp": 24.7,
+    "avg_press": 1017.0,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "National",
+    "country": "Bolivia",
+    "avg_temp": 22.5,
+    "avg_press": 1011.2,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "New Delhi",
+    "country": "Inde",
+    "avg_temp": 31.2,
+    "avg_press": 996.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "New Delhi",
+    "country": "India",
+    "avg_temp": 29.7,
+    "avg_press": 1008.5,
+    "avg_precip": 526.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "New Guatemala",
+    "country": "\u0413\u0432\u0430\u0442\u0435\u043c\u0430\u043b\u0430",
+    "avg_temp": 15.9,
+    "avg_press": 1020.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "New York",
+    "country": "United States of America",
+    "avg_temp": 26.1,
+    "avg_press": 1013.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Ngaoundere",
+    "country": "Cameroon",
+    "avg_temp": 25.4,
+    "avg_press": 1016.1,
+    "avg_precip": 2102.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Niamey",
+    "country": "Niger",
+    "avg_temp": 29.0,
+    "avg_press": 1012.6,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Nicosia",
+    "country": "Cyprus",
+    "avg_temp": 24.7,
+    "avg_press": 1013.2,
+    "avg_precip": 263.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Norman Gardens",
+    "country": "Jamaica",
+    "avg_temp": 30.3,
+    "avg_press": 1013.0,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Nouakchott",
+    "country": "Mauritania",
+    "avg_temp": 23.7,
+    "avg_press": 1013.4,
+    "avg_precip": 88.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Nuku'alofa",
+    "country": "Tonga",
+    "avg_temp": 23.7,
+    "avg_press": 1019.0,
+    "avg_precip": 88.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Nuku`Aloia",
+    "country": "Tonga",
+    "avg_temp": 23.9,
+    "avg_press": 1014.7,
+    "avg_precip": 1752.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Oslo",
+    "country": "Norway",
+    "avg_temp": 8.1,
+    "avg_press": 1010.7,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Ottawa",
+    "country": "Canada",
+    "avg_temp": 5.0,
+    "avg_press": 1015.2,
+    "avg_precip": 1314.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Ouagadougou",
+    "country": "Burkina Faso",
+    "avg_temp": 27.9,
+    "avg_press": 1013.0,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Palau",
+    "country": "USA United States of America",
+    "avg_temp": 27.2,
+    "avg_press": 1010.0,
+    "avg_precip": 13928.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Palikir",
+    "country": "Micronesia",
+    "avg_temp": 28.1,
+    "avg_press": 1009.8,
+    "avg_precip": 3066.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Panama City",
+    "country": "Panama",
+    "avg_temp": 25.4,
+    "avg_press": 1010.1,
+    "avg_precip": 1664.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Paramaribo",
+    "country": "Suriname",
+    "avg_temp": 24.4,
+    "avg_press": 1011.8,
+    "avg_precip": 1489.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Paris",
+    "country": "France",
+    "avg_temp": 13.5,
+    "avg_press": 1016.1,
+    "avg_precip": 964.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Pasto",
+    "country": "Paraguay",
+    "avg_temp": 22.3,
+    "avg_press": 1017.1,
+    "avg_precip": 0.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Pathein",
+    "country": "Myanmar",
+    "avg_temp": 28.8,
+    "avg_press": 1005.1,
+    "avg_precip": 6745.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Phnom Penh",
+    "country": "Cambodia",
+    "avg_temp": 31.4,
+    "avg_press": 1006.7,
+    "avg_precip": 1314.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Phnum Penh",
+    "country": "Cambodia",
+    "avg_temp": 26.3,
+    "avg_press": 1008.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Podgorica",
+    "country": "Montenegro",
+    "avg_temp": 18.9,
+    "avg_press": 1015.9,
+    "avg_precip": 1752.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Port Louis",
+    "country": "Mauritius",
+    "avg_temp": 26.7,
+    "avg_press": 1016.9,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Port Moresby",
+    "country": "Papua New Guinea",
+    "avg_temp": 26.8,
+    "avg_press": 1008.3,
+    "avg_precip": 4380.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Port Of Spain",
+    "country": "Trinidad and Tobago",
+    "avg_temp": 25.4,
+    "avg_press": 1012.2,
+    "avg_precip": 2015.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Port Royal",
+    "country": "Jamaica",
+    "avg_temp": 26.9,
+    "avg_press": 1013.0,
+    "avg_precip": 1752.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Port Vila",
+    "country": "Vanuatu",
+    "avg_temp": 25.0,
+    "avg_press": 1011.7,
+    "avg_precip": 2015.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Port-Au-Prince",
+    "country": "Haiti",
+    "avg_temp": 21.5,
+    "avg_press": 1014.6,
+    "avg_precip": 263.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Porto-Novo",
+    "country": "Benin",
+    "avg_temp": 28.4,
+    "avg_press": 1012.4,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Prague",
+    "country": "Czech Republic",
+    "avg_temp": 11.2,
+    "avg_press": 1016.8,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Praia",
+    "country": "Cape Verde",
+    "avg_temp": 24.2,
+    "avg_press": 1014.0,
+    "avg_precip": 88.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Pretoria",
+    "country": "South Africa",
+    "avg_temp": 21.1,
+    "avg_press": 1023.3,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Pristina",
+    "country": "Kosovo",
+    "avg_temp": 29.3,
+    "avg_press": 1012.0,
+    "avg_precip": 2365.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Pyongyang",
+    "country": "North Korea",
+    "avg_temp": 13.5,
+    "avg_press": 1015.4,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Quito",
+    "country": "Ecuador",
+    "avg_temp": 10.5,
+    "avg_press": 1016.9,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Rabat",
+    "country": "Morocco",
+    "avg_temp": 19.1,
+    "avg_press": 1016.7,
+    "avg_precip": 526.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Rangoon",
+    "country": "Myanmar",
+    "avg_temp": 30.8,
+    "avg_press": 1009.3,
+    "avg_precip": 2453.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Reykjavik",
+    "country": "Iceland",
+    "avg_temp": 3.7,
+    "avg_press": 1002.0,
+    "avg_precip": 1139.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Riga",
+    "country": "Latvia",
+    "avg_temp": 9.9,
+    "avg_press": 1014.4,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Riga",
+    "country": "Letonia",
+    "avg_temp": 20.6,
+    "avg_press": 1007.0,
+    "avg_precip": 16031.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "avg_temp": 30.9,
+    "avg_press": 1013.6,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Rome",
+    "country": "Italy",
+    "avg_temp": 19.0,
+    "avg_press": 1015.4,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Roseau",
+    "country": "Dominica",
+    "avg_temp": 26.6,
+    "avg_press": 1013.8,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "S-Chanf",
+    "country": "Switzerland",
+    "avg_temp": 1.6,
+    "avg_press": 1020.1,
+    "avg_precip": 1314.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "S. Manian",
+    "country": "Vietnam",
+    "avg_temp": 28.0,
+    "avg_press": 1010.4,
+    "avg_precip": 0.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Saint George's",
+    "country": "Grenada",
+    "avg_temp": 27.1,
+    "avg_press": 1012.5,
+    "avg_precip": 1402.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Saint John's",
+    "country": "Antigua and Barbuda",
+    "avg_temp": 26.4,
+    "avg_press": 1014.4,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Saint Petersburg",
+    "country": "Russia",
+    "avg_temp": 22.9,
+    "avg_press": 1017.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "San Ignacio",
+    "country": "Costa Rica",
+    "avg_temp": 19.4,
+    "avg_press": 1015.1,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "San Jose",
+    "country": "Costa Rica",
+    "avg_temp": 20.3,
+    "avg_press": 1016.2,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "San Juan",
+    "country": "Costa Rica",
+    "avg_temp": 23.8,
+    "avg_press": 1018.2,
+    "avg_precip": 1752.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "San Marino",
+    "country": "San Marino",
+    "avg_temp": 16.9,
+    "avg_press": 1015.8,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "San Salvador",
+    "country": "El Salvador",
+    "avg_temp": 23.7,
+    "avg_press": 1011.8,
+    "avg_precip": 2102.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Sanaa",
+    "country": "Jemen",
+    "avg_temp": 26.1,
+    "avg_press": 1007.0,
+    "avg_precip": 1752.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Sanaa",
+    "country": "Yemen",
+    "avg_temp": 22.2,
+    "avg_press": 1013.9,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Santiago",
+    "country": "Chile",
+    "avg_temp": 11.1,
+    "avg_press": 1016.3,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Santo Domingo",
+    "country": "Dominican Republic",
+    "avg_temp": 24.0,
+    "avg_press": 1014.8,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Sao Paulo",
+    "country": "Brazil",
+    "avg_temp": 17.9,
+    "avg_press": 1022.0,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Sarajevo",
+    "country": "Bosnia and Herzegovina",
+    "avg_temp": 13.3,
+    "avg_press": 1017.6,
+    "avg_precip": 1402.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Sartorio",
+    "country": "Paraguay",
+    "avg_temp": 24.3,
+    "avg_press": 1006.7,
+    "avg_precip": 350.0,
+    "temp_trend": "increasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Seoul",
+    "country": "South Korea",
+    "avg_temp": 16.0,
+    "avg_press": 1015.4,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Seoul",
+    "country": "S\u00fcdkorea",
+    "avg_temp": 26.1,
+    "avg_press": 1007.0,
+    "avg_precip": 1927.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Singapore",
+    "country": "Singapore",
+    "avg_temp": 29.8,
+    "avg_press": 1008.4,
+    "avg_precip": 3329.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Skopje",
+    "country": "Macedonia",
+    "avg_temp": 17.0,
+    "avg_press": 1017.6,
+    "avg_precip": 526.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Sofia",
+    "country": "Bulgaria",
+    "avg_temp": 14.1,
+    "avg_press": 1017.8,
+    "avg_precip": 1051.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Stockholm",
+    "country": "Sweden",
+    "avg_temp": 9.9,
+    "avg_press": 1012.7,
+    "avg_precip": 526.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Sucre",
+    "country": "Bolivia",
+    "avg_temp": 11.9,
+    "avg_press": 1015.0,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Surabaya",
+    "country": "Indonesia",
+    "avg_temp": 27.7,
+    "avg_press": 1009.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Suva",
+    "country": "Fiji Islands",
+    "avg_temp": 24.6,
+    "avg_press": 1012.1,
+    "avg_precip": 2978.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Tallinn",
+    "country": "Estonia",
+    "avg_temp": 9.2,
+    "avg_press": 1012.9,
+    "avg_precip": 788.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Tallinn",
+    "country": "Estonie",
+    "avg_temp": 23.3,
+    "avg_press": 1012.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Tarawa",
+    "country": "Kiribati",
+    "avg_temp": 27.9,
+    "avg_press": 1009.8,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Tashkent",
+    "country": "Uzbekistan",
+    "avg_temp": 21.9,
+    "avg_press": 1016.1,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Tbilisi",
+    "country": "Georgia",
+    "avg_temp": 17.4,
+    "avg_press": 1017.3,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Tegucigalpa",
+    "country": "Honduras",
+    "avg_temp": 19.1,
+    "avg_press": 1021.5,
+    "avg_precip": 613.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Tehran",
+    "country": "Iran",
+    "avg_temp": 22.0,
+    "avg_press": 1019.4,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Thimphu",
+    "country": "Bhutan",
+    "avg_temp": 13.4,
+    "avg_press": 1010.1,
+    "avg_precip": 2540.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Tirana",
+    "country": "Albania",
+    "avg_temp": 19.8,
+    "avg_press": 1015.5,
+    "avg_precip": 1314.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Tokyo",
+    "country": "Japan",
+    "avg_temp": 19.6,
+    "avg_press": 1012.3,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Tripoli",
+    "country": "Libya",
+    "avg_temp": 27.0,
+    "avg_press": 1007.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Tunis",
+    "country": "Tunisia",
+    "avg_temp": 22.2,
+    "avg_press": 1016.4,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Ulaanbaatar",
+    "country": "Mongolia",
+    "avg_temp": 3.5,
+    "avg_press": 1016.0,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Vaduz",
+    "country": "Liechtenstein",
+    "avg_temp": 10.5,
+    "avg_press": 1017.5,
+    "avg_precip": 1664.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Valletta",
+    "country": "Malta",
+    "avg_temp": 22.2,
+    "avg_press": 1016.4,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Vatican City",
+    "country": "Vatican City",
+    "avg_temp": 19.0,
+    "avg_press": 1015.4,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Vestmannaeyjar",
+    "country": "Iceland",
+    "avg_temp": 6.4,
+    "avg_press": 1004.7,
+    "avg_precip": 1664.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Victoria",
+    "country": "Seychelles Islands",
+    "avg_temp": 28.8,
+    "avg_press": 1011.0,
+    "avg_precip": 1139.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Vienna",
+    "country": "Austria",
+    "avg_temp": 12.9,
+    "avg_press": 1017.3,
+    "avg_precip": 701.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Vientiane",
+    "country": "Lao People's Democratic Republic",
+    "avg_temp": 25.0,
+    "avg_press": 1004.0,
+    "avg_precip": 17257.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Vilnius",
+    "country": "Lithuania",
+    "avg_temp": 9.5,
+    "avg_press": 1015.4,
+    "avg_precip": 1139.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Warsaw",
+    "country": "Poland",
+    "avg_temp": 11.7,
+    "avg_press": 1016.3,
+    "avg_precip": 526.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Washington Harbor",
+    "country": "United States of America",
+    "avg_temp": 8.5,
+    "avg_press": 1017.3,
+    "avg_precip": 438.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Washington Park",
+    "country": "United States of America",
+    "avg_temp": 10.4,
+    "avg_press": 1016.0,
+    "avg_precip": 0.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Wellington",
+    "country": "New Zealand",
+    "avg_temp": 13.9,
+    "avg_press": 1013.8,
+    "avg_precip": 1402.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Windhoek",
+    "country": "Namibia",
+    "avg_temp": 22.9,
+    "avg_press": 1021.2,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Yamoussoukro",
+    "country": "Cote d'Ivoire",
+    "avg_temp": 22.8,
+    "avg_press": 1012.8,
+    "avg_precip": 175.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Yangon",
+    "country": "Myanmar",
+    "avg_temp": 30.5,
+    "avg_press": 1006.8,
+    "avg_precip": 4380.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Yaounde",
+    "country": "Cameroon",
+    "avg_temp": 29.8,
+    "avg_press": 1014.1,
+    "avg_precip": 2803.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Tropical"
+  },
+  {
+    "city": "Yaren",
+    "country": "Turkey",
+    "avg_temp": 18.4,
+    "avg_press": 1015.7,
+    "avg_precip": 613.0,
+    "temp_trend": "decreasing",
+    "climate_cluster": "Coastal"
+  },
+  {
+    "city": "Yaren",
+    "country": "\u0422\u0443\u0440\u0446\u0438\u044f",
+    "avg_temp": 34.0,
+    "avg_press": 1006.0,
+    "avg_precip": 0.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Arid"
+  },
+  {
+    "city": "Yerevan",
+    "country": "Armenia",
+    "avg_temp": 17.1,
+    "avg_press": 1016.6,
+    "avg_precip": 350.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Temperate"
+  },
+  {
+    "city": "Zagreb",
+    "country": "Croatia",
+    "avg_temp": 14.4,
+    "avg_press": 1017.4,
+    "avg_precip": 876.0,
+    "temp_trend": "stable",
+    "climate_cluster": "Coastal"
+  }
+]

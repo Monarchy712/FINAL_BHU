@@ -145,12 +145,16 @@ const TourCard: React.FC<TourCardProps> = ({ onHover, active, onClick }) => (
 );
 
 /* ─── CITIES LIKE MINE CARD ────────────────────────────────────── */
-const CityCard: React.FC<CardProps> = ({ onHover, active }) => (
+interface CityCardProps extends CardProps {
+    onClick: () => void;
+}
+const CityCard: React.FC<CityCardProps> = ({ onHover, active, onClick }) => (
   <div
     className={`user-card user-card-city group ${active ? 'user-card-active' : ''}`}
     onMouseEnter={() => onHover('city')}
     onMouseLeave={() => onHover(null)}
-    style={{ transform: 'rotate(5deg) translateY(10px)' }}
+    onClick={onClick}
+    style={{ transform: 'rotate(5deg) translateY(10px)', cursor: 'pointer' }}
   >
     {/* Popout: Mini city skyline */}
     <div className="city-popout-wrap">
@@ -279,7 +283,7 @@ export default function Enthusiasts() {
       <div className="user-card-tray">
         <StoryCard onHover={setHovered} active={hovered === 'story'} />
         <TourCard  onHover={setHovered} active={hovered === 'tour'} onClick={() => navigate('/enthusiasts/guided_tour')} />
-        <CityCard  onHover={setHovered} active={hovered === 'city'} />
+        <CityCard  onHover={setHovered} active={hovered === 'city'} onClick={() => navigate('/cities')} />
       </div>
 
       <button 

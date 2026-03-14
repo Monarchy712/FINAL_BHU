@@ -391,9 +391,10 @@ export default function Researchers() {
 
         {/* 5. Landscape Analyser (Terrain Scan Pop-out) */}
         <div 
-          className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto"
+          className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto cursor-pointer"
           onMouseEnter={() => setActiveHover('landscape')}
           onMouseLeave={() => setActiveHover(null)}
+          onClick={() => navigate('/landscape', { state: { mlModalMode: true } })}
         >
           {/* POP-OUT ELEMENT */}
           <div className="popout-container !w-72 !h-64 !-top-24">
