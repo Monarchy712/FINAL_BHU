@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celestial Climate Explorer | Deep Space Portal</title>
+  
+  <!-- External Resources -->
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.107/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.107/Build/Cesium/Widgets/widgets.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── BASE DESIGN SYSTEM (SPACE THEME) ───────────────────── */
+    :root {
+      --bg-deep:   #010206;
+      --accent-main: #00d4ff;   /* Neon Cyan */
+      --accent-secondary: #0072ff; /* Tech Blue */
+      --accent-glow: rgba(0, 212, 255, 0.25);
+      --text-main:  #f0f9ff;
+      --text-dim:   #94a3b8;
+      --glass:      rgba(255, 255, 255, 0.03);
+      --glass-edge: rgba(255, 255, 255, 0.06);
+      --radius:     16px;
+      --transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+    
+    body, html {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-main);
+      overflow: hidden;
+    }
+
+    /* ─── SPACE BACKGROUND ANIMATION ────────────────────────── */
+    .space-bg {
+      position: fixed; inset: 0; z-index: -1;
+      background: radial-gradient(circle at 50% 50%, #050a1e 0%, #010206 100%);
+      overflow: hidden;
+    }
+
+    /* Assets removed for professional look */
+    .nebula {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.18;
+      animation: nebDrift 60s linear infinite;
+      transition: opacity 2s ease;
+    }
+    .neb-1 { width: 800px; height: 800px; background: var(--accent-secondary); top: -300px; left: -200px; }
+    .neb-2 { width: 600px; height: 600px; background: #312e81; bottom: -150px; right: -100px; animation-delay: -15s; }
+    .neb-3 { width: 500px; height: 500px; background: var(--accent-main); top: 25%; left: 35%; animation-delay: -30s; opacity: 0.12; }
+
+
+    .stars-overlay {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 150px 150px;
+      opacity: 0.1;
+    }
+
+    /* ─── DASHBOARD CORE ────────────────────────────────────── */
+    .app-shell {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      padding: 24px;
+      gap: 16px;
+    }
+
+    /* ─── HEADER ─────────────────────────────────────────────── */
+    .app-header {
+      display: flex;
+      justify-content: flex-end; /* Push to right to avoid Return button */
+      align-items: center;
+      padding: 0 16px;
+      gap: 24px;
+    }
+
+    .title-area h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #fff, var(--accent-main));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-area p {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      margin-top: 2px;
+    }
+
+    /* Badge removed for professional look */
+
+    /* ─── MAIN LAYOUT ────────────────────────────────────────── */
+    .app-main {
+      flex: 1;
+      display: flex;
+      gap: 20px;
+      min-height: 0;
+    }
+
+    /* Globe Frame */
+    .globe-frame {
+      flex: 1;
+      position: relative;
+      background: var(--glass);
+      backdrop-filter: blur(30px);
+      border-radius: var(--radius);
+      border: 1px solid var(--glass-edge);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      transition: var(--transition);
+    }
+
+    .globe-frame:hover {
+      border-color: var(--accent-main);
+      box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
+    }
+
+    #cesiumContainer { width: 100%; height: 100%; border-radius: inherit; }
+
+    /* Control Sidebar */
+    .control-sidebar {
+      width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .config-panel {
+      background: var(--glass);
+      backdrop-filter: blur(30px);
+      border-radius: var(--radius);
+      border: 1px solid var(--glass-edge);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel-header {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-main);
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .field-label {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .sci-fi-input {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-edge);
+      border-radius: 10px;
+      padding: 12px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    .sci-fi-input:focus {
+      background: rgba(0, 212, 255, 0.08);
+      border-color: var(--accent-main);
+      box-shadow: 0 0 20px var(--accent-glow);
+    }
+
+    select.sci-fi-input option {
+      background: #0a0b14;
+      color: #fff;
+    }
+
+    .btn-warp {
+      background: linear-gradient(135deg, var(--accent-main), var(--accent-secondary));
+      color: #010206;
+      border: none;
+      padding: 18px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(0, 114, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-warp:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+      filter: brightness(1.2);
+    }
+
+    .btn-warp:active { transform: translateY(0) scale(0.98); }
+
+    /* Info Snippet */
+    .info-snippet {
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+      padding: 0 4px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    .app-footer {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 8px;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* Cesium UI Overrides */
+    .cesium-viewer-animationContainer, .cesium-viewer-timelineContainer {
+      background: rgba(1, 2, 6, 0.8) !important;
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--glass-edge);
+    }
+    .cesium-timeline-main { border-color: var(--accent-main) !important; }
+    .cesium-timeline-bar { background: var(--accent-main) !important; }
+    .cesium-viewer-bottom { display: none !important; } /* Hide logo/terms for clean look */
+  </style>
+</head>
+<body>
+
+  <!-- Space Background Layers -->
+  <div class="space-bg">
+    <div class="nebula neb-1"></div>
+    <div class="nebula neb-2"></div>
+    <div class="nebula neb-3"></div>
+    <div class="stars-overlay"></div>
+  </div>
+
+  <div class="app-shell">
+    
+    <!-- Portal Header -->
+    <header class="app-header">
+      <div class="title-area">
+        <h1 style="font-size: 1.2rem; opacity: 0.9;">Atmospheric Research Portal</h1>
+        <p style="letter-spacing: 0.15em;">Thermal Intensity Reconstruction Unit</p>
+      </div>
+    </header>
+
+    <!-- UI Core -->
+    <main class="app-main">
+      
+      <!-- Visualization Frame -->
+      <section class="globe-frame">
+        <div id="cesiumContainer"></div>
+      </section>
+
+      <!-- Command Sidebar -->
+      <aside class="control-sidebar">
+        
+        <div class="config-panel">
+          <div class="panel-header">Instrumentation</div>
+          
+          <div class="field-group">
+            <label class="field-label">Cycle Year</label>
+            <input type="number" id="year" class="sci-fi-input" value="1753" min="1753" max="2025">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Month Index</label>
+            <input type="number" id="month" class="sci-fi-input" value="6" min="1" max="12">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Day</label>
+            <input type="number" id="day" class="sci-fi-input" value="1" min="1" max="31">
+          </div>
+
+          <div class="field-group">
+            <label class="field-label">Playback & Controls</label>
+            <div style="display: flex; gap: 8px;">
+              <button id="playBtn" class="sci-fi-input" style="flex: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; border-color: rgba(255,255,255,0.1);">
+                <span id="playLabel">PLAY</span>
+              </button>
+              <select id="speedSelect" class="sci-fi-input" style="flex: 1; cursor: pointer; font-size: 0.8rem; font-weight: 700; color: var(--accent-main);">
+                <option value="1">1x Realtime</option>
+                <option value="86400" selected>Daily Warp</option>
+                <option value="2592000">Monthly Warp</option>
+              </select>
+            </div>
+          </div>
+
+          <button id="genBtn" class="btn-warp">
+            <span>Update Analysis</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </div>
+
+      </aside>
+
+    </main>
+
+    <!-- Portal Footer -->
+    <footer class="app-footer">
+      <span>Unit: Geo-Mapper Alpha</span>
+    </footer>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  CESIUM LOGIC — UNTOUCHED (BY DESIGN)                    -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <script>
+    Cesium.Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyZGM3NGJjOC0wNTc1LTQ5OWQtYjlmMS1jMTdlZmY1YWFlNzUiLCJpZCI6NDAzNDUwLCJpYXQiOjE3NzM0NzA5NTZ9.YHjkJF9NPHGeeVEiftZCy1OJqgrUc0dhg9rv8hZLN7I";
+    
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      baseLayerPicker: false,
+      geocoder: false,
+      homeButton: false,
+      infoBox: false,
+      navigationHelpButton: false,
+      sceneModePicker: false,
+      timeline: true,
+      animation: true,
+      fullscreenButton: false,
+      shouldAnimate: false
+    });
+
+    Cesium.createWorldImageryAsync().then(provider => {
+      viewer.imageryLayers.addImageryProvider(provider);
+    });
+
+    let dynamicLayer;
+    let lastSyncedDateString = "";
+    let isFetching = false;
+
+    const syncDateToClock = () => {
+      const time = viewer.clock.currentTime;
+      const date = Cesium.JulianDate.toGregorianDate(time);
+      document.getElementById('year').value = date.year;
+      document.getElementById('month').value = date.month;
+      document.getElementById('day').value = date.day;
+      
+      const dateStr = `${date.year}-${date.month}-${date.day}`;
+      if (dateStr !== lastSyncedDateString && !isFetching && viewer.clock.shouldAnimate) {
+        triggerSync(date.year, date.month, date.day);
+      }
+    };
+
+    const triggerSync = async (y, m, d) => {
+      isFetching = true;
+      const btn = document.getElementById('genBtn');
+      const originalContent = btn.innerHTML;
+      btn.innerHTML = '<span>Syncing...</span>';
+      
+      try {
+        const res = await fetch(`/generate_image?year=${y}&month=${m}&day=${d}`);
+        const relUrl = await res.text();
+        const imgUrl = window.location.origin + relUrl + "?t=" + new Date().getTime();
+
+        const newLayer = viewer.imageryLayers.addImageryProvider(
+          new Cesium.SingleTileImageryProvider({
+            url: imgUrl,
+            rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90)
+          })
+        );
+        
+        // Remove old layer with slight delay to prevent flicker
+        if (dynamicLayer) {
+          const oldLayer = dynamicLayer;
+          setTimeout(() => viewer.imageryLayers.remove(oldLayer), 500);
+        }
+        dynamicLayer = newLayer;
+        lastSyncedDateString = `${y}-${m}-${d}`;
+      } catch (e) {
+        console.error("Scan Failed:", e);
+      } finally {
+        isFetching = false;
+        btn.innerHTML = originalContent;
+      }
+    };
+
+    // Play/Pause Toggle
+    document.getElementById('playBtn').onclick = () => {
+      viewer.clock.shouldAnimate = !viewer.clock.shouldAnimate;
+      document.getElementById('playLabel').innerText = viewer.clock.shouldAnimate ? 'STOP' : 'PLAY';
+      document.getElementById('playBtn').style.borderColor = viewer.clock.shouldAnimate ? 'var(--accent-main)' : 'var(--glass-edge)';
+    };
+
+    // Speed Selector
+    document.getElementById('speedSelect').onchange = (e) => {
+      viewer.clock.multiplier = parseFloat(e.target.value);
+    };
+
+    // Manual Sync Button
+    document.getElementById('genBtn').onclick = () => {
+      const y = document.getElementById('year').value;
+      const m = document.getElementById('month').value;
+      const d = document.getElementById('day').value;
+      
+      // Update clock to match input values
+      const targetDate = Cesium.JulianDate.fromDate(new Date(y, m-1, d));
+      viewer.clock.currentTime = targetDate;
+      if (viewer.timeline) viewer.timeline.updateFromClock();
+      
+      triggerSync(y, m, d);
+    };
+
+    // Listen for clock ticks
+    viewer.clock.onTick.addEventListener(() => {
+      syncDateToClock();
+      
+      // Professional slow rotation (regardless of warp)
+      // Rotates around the Earth's axis (Z) at a constant slow rate
+      viewer.scene.camera.rotateLeft(0.00015);
+    });
+
+    // Initial sync
+    triggerSync(1753, 1, 1);
+  </script>
+
+</body>
+</html>

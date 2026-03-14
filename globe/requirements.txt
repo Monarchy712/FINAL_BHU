@@ -1,0 +1,8 @@
+xarray
+fastapi
+uvicorn
+pandas
+matplotlib
+numpy
+netcdf4
+scikit-learn
