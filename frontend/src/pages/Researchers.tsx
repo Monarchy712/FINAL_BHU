@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   Globe2, 
-  Clock, 
   AlertTriangle, 
   Map, 
-  Cpu 
+  Cpu,
+  ArrowLeft,
+  Mountain
 } from 'lucide-react';
 
 
@@ -100,10 +101,10 @@ export default function Researchers() {
          style={{
             backgroundColor: 
               activeHover === 'spatial' ? 'rgba(0, 240, 255, 0.05)' :
-              activeHover === 'temporal' ? 'rgba(181, 53, 246, 0.05)' :
               activeHover === 'anomaly' ? 'rgba(255, 51, 51, 0.08)' :
               activeHover === 'intensity' ? 'rgba(255, 107, 0, 0.05)' :
               activeHover === 'forecast' ? 'rgba(100, 255, 218, 0.05)' : 
+              activeHover === 'landscape' ? 'rgba(156, 39, 176, 0.06)' : 
               'transparent'
          }}
     >
@@ -120,20 +121,6 @@ export default function Researchers() {
           <div className="absolute w-[250vw] h-[150vh] globe-texture animate-globe-spin opacity-50 [mask-image:radial-gradient(black,transparent_70%)]"></div>
           <div className="w-[150vw] md:w-[100vw] aspect-square rounded-full border-[2px] border-portal-teal/30 p-20 animate-spin-slow opacity-80">
               <div className="w-full h-full rounded-full border-[3px] border-dashed border-portal-teal/40 animate-[clockSpin_60s_linear_infinite]"></div>
-          </div>
-      </div>
-
-      <div 
-        className="absolute inset-0 pointer-events-none transition-opacity duration-1000 mix-blend-screen opacity-0 overflow-hidden flex items-center justify-center transform scale-150 origin-center"
-        style={{ 
-          opacity: activeHover === 'temporal' ? 0.6 : 0,
-          background: 'repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(181, 53, 246, 0.08) 60px, rgba(181, 53, 246, 0.08) 120px)'
-        }}
-      >
-          {/* Huge clock in background */}
-          <div className="w-[150vw] md:w-[100vw] aspect-square rounded-full border-[4px] border-portal-purple/30 flex items-center justify-center opacity-90 drop-shadow-[0_0_20px_#b535f6]">
-             <div className="absolute w-[6px] h-[40vw] bg-gradient-to-t from-portal-purple to-transparent origin-bottom bottom-1/2 rounded-full animate-clock-spin opacity-70"></div>
-             <div className="absolute inset-10 border-[6px] border-dashed border-portal-purple/30 rounded-full animate-[clockSpin_40s_linear_infinite_reverse]"></div>
           </div>
       </div>
 
@@ -218,6 +205,34 @@ export default function Researchers() {
           </svg>
       </div>
 
+      <div 
+        className="absolute inset-0 pointer-events-none transition-opacity duration-1000 mix-blend-screen opacity-0 overflow-hidden flex items-center justify-center transform scale-150 origin-bottom"
+        style={{ 
+          opacity: activeHover === 'landscape' ? 0.7 : 0,
+          background: 'linear-gradient(to top, rgba(156, 39, 176, 0.15) 0%, transparent 60%)'
+        }}
+      >
+          {/* Wireframe Terrain Simulation SVG */}
+          <div className="absolute bottom-0 w-[200vw] h-[60vh] opacity-60">
+              <svg viewBox="0 0 1000 300" preserveAspectRatio="none" className="w-full h-full text-purple-400 drop-shadow-[0_0_15px_rgba(156,39,176,0.6)]">
+                  <path d="M 0 300 L 0 200 Q 100 180 200 220 T 400 150 T 600 250 T 800 180 T 1000 120 L 1000 300 Z" fill="rgba(156,39,176,0.1)" stroke="currentColor" strokeWidth="2" />
+                  <path d="M 0 300 L 0 230 Q 120 210 220 260 T 450 180 T 650 280 T 820 220 T 1000 160 L 1000 300 Z" fill="none" stroke="currentColor" strokeWidth="1" className="opacity-70 animate-[pulse_4s_infinite]" />
+                  <path d="M 0 300 L 0 250 Q 80 240 180 280 T 500 200 T 700 290 T 850 250 T 1000 190 L 1000 300 Z" fill="none" stroke="currentColor" strokeWidth="1" className="opacity-40 animate-[pulse_3s_infinite_0.5s]" />
+              </svg>
+          </div>
+          {/* Vertical Terrain Mapping Lasers */}
+          <div className="absolute inset-x-0 bottom-0 h-[60vh] bg-[repeating-linear-gradient(90deg,transparent,transparent_40px,rgba(156,39,176,0.1)_40px,rgba(156,39,176,0.1)_42px)] animate-[timeWave_15s_linear_infinite] [mask-image:linear-gradient(to_top,black,transparent)]"></div>
+      </div>
+
+      {/* Back Button */}
+      <button 
+        onClick={() => navigate('/')}
+        className="absolute top-6 left-6 z-50 flex items-center gap-2 px-4 py-2 bg-portal-teal/10 hover:bg-portal-teal/20 border border-portal-teal/30 rounded-full text-portal-teal backdrop-blur-md transition-all group shadow-[0_0_15px_rgba(0,240,255,0.2)]"
+      >
+        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+        <span className="font-display tracking-widest text-sm">RETURN TO HUB</span>
+      </button>
+
       <header className="mb-16 text-center z-10">
         <h1 className="text-4xl md:text-5xl font-display font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-portal-teal to-portal-neon drop-shadow-[0_0_15px_rgba(0,240,255,0.4)] mb-4">
           SYSTEM TERMINAL
@@ -227,8 +242,8 @@ export default function Researchers() {
         </p>
       </header>
 
-      {/* Grid Layout taking up central space - 3 in top row, 2 centered in bottom row */}
-      <main className="flex flex-wrap justify-center gap-x-8 gap-y-24 max-w-7xl w-full z-10 pt-16 mt-8">
+      {/* Grid Layout - 3 top, 2 bottom to accommodate 5 cards evenly */}
+      <main className="flex flex-wrap justify-center gap-x-8 gap-y-24 max-w-6xl mx-auto w-full z-10 pt-16 mt-8">
 
         {/* 1. Geospatial Climate Explorer (Globe Pop-out) */}
         <div 
@@ -263,40 +278,7 @@ export default function Researchers() {
           </div>
         </div>
 
-        {/* 2. Climate Timeline Analyzer (Clock Pop-out) */}
-        <div 
-          className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto"
-          onMouseEnter={() => setActiveHover('temporal')}
-          onMouseLeave={() => setActiveHover(null)}
-        >
-          
-          {/* POP-OUT ELEMENT */}
-          <div className="popout-container !w-72 !h-72 !-top-36">
-             {/* Expanded timeline bar extending beyond card */}
-             <div className="absolute bottom-16 left-1/2 -translate-x-1/2 h-10 w-[200%] bg-portal-purple/10 border-y-2 border-portal-purple/30 timeline-bar-expand overflow-hidden rounded-full backdrop-blur-sm drop-shadow-[0_0_15px_rgba(181,53,246,0.6)]">
-                 <div className="w-[300%] h-full bg-[repeating-linear-gradient(45deg,transparent,transparent_15px,rgba(181,53,246,0.4)_15px,rgba(181,53,246,0.4)_30px)] animate-time-wave"></div>
-             </div>
-             {/* Clock Face */}
-             <div className="w-48 h-48 absolute bottom-0 left-1/2 -translate-x-1/2 rounded-full border-[4px] border-portal-purple/60 clock-face flex items-center justify-center bg-black/20 backdrop-blur-md">
-                 {/* Center Dot */}
-                 <div className="w-4 h-4 bg-portal-neon rounded-full shadow-[0_0_15px_#64ffda] z-10"></div>
-                 {/* Clock Hands */}
-                 <div className="absolute w-1.5 h-20 bg-gradient-to-t from-portal-purple to-portal-neon origin-bottom bottom-1/2 rounded-full animate-clock-spin"></div>
-                 <div className="absolute w-2 h-14 bg-portal-purple origin-bottom bottom-1/2 rounded-full transform rotate-45 opacity-80"></div>
-                 {/* Hour Markers */}
-                 <div className="absolute inset-3 border-[2px] border-dashed border-portal-purple/50 rounded-full animate-[clockSpin_20s_linear_infinite_reverse]"></div>
-             </div>
-          </div>
-
-          <div className="flex flex-col items-center justify-center z-10 w-full pointer-events-none">
-            <div className="card-icon-wrapper p-4 mb-4 bg-portal-purple/10 rounded-2xl text-portal-purple transition-all duration-300 drop-shadow-[0_0_10px_rgba(181,53,246,0.5)]">
-              <Clock size={56}/>
-            </div>
-            <h3 className="text-3xl card-title text-portal-purple font-display font-bold tracking-wider transition-all duration-300 drop-shadow-[0_0_8px_rgba(181,53,246,0.4)] leading-tight">Temporal<br/>View</h3>
-          </div>
-        </div>
-
-        {/* 3. Extreme Event Detector (Rupture Pop-out) */}
+        {/* 2. Extreme Event Detector (Rupture Pop-out) */}
         <div 
           className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto"
           onMouseEnter={() => setActiveHover('anomaly')}
@@ -332,7 +314,7 @@ export default function Researchers() {
           </div>
         </div>
 
-        {/* 4. Climate Intensity Map (3D Terrain Heatmap Pop-out) */}
+        {/* 3. Climate Intensity Map (3D Terrain Heatmap Pop-out) */}
         <div 
           className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto cursor-pointer"
           onMouseEnter={() => setActiveHover('intensity')}
@@ -364,7 +346,7 @@ export default function Researchers() {
           </div>
         </div>
 
-        {/* 5. AI Climate Forecast (Network Float Pop-out) */}
+        {/* 4. AI Climate Forecast (Network Float Pop-out) */}
         <div 
           className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto"
           onMouseEnter={() => setActiveHover('forecast')}
@@ -404,6 +386,41 @@ export default function Researchers() {
               <Cpu size={56}/>
             </div>
             <h3 className="text-3xl card-title text-portal-neon font-display font-bold tracking-wider transition-all duration-300 drop-shadow-[0_0_8px_rgba(100,255,218,0.4)] leading-tight">Future<br/>Predictor</h3>
+          </div>
+        </div>
+
+        {/* 5. Landscape Analyser (Terrain Scan Pop-out) */}
+        <div 
+          className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto"
+          onMouseEnter={() => setActiveHover('landscape')}
+          onMouseLeave={() => setActiveHover(null)}
+        >
+          {/* POP-OUT ELEMENT */}
+          <div className="popout-container !w-72 !h-64 !-top-24">
+             {/* 3D Wireframe Base */}
+             <div className="w-full h-full absolute bottom-4 rounded-xl heat-surface overflow-hidden border-[2px] border-purple-500/40 bg-black/60 backdrop-blur-md shadow-[0_0_30px_rgba(156,39,176,0.3)]">
+                 {/* Internal grid to help 3D illusion */}
+                 <div className="absolute inset-0 bg-[linear-gradient(rgba(156,39,176,0.3)_2px,transparent_2px),linear-gradient(90deg,rgba(156,39,176,0.3)_2px,transparent_2px)] bg-[size:25px_25px] transform perspective(500px) rotateX(60deg) scale(2) origin-bottom"></div>
+                 {/* Scanning Laser Line */}
+                 <div className="absolute top-0 left-0 right-0 h-1 bg-purple-400 shadow-[0_0_15px_#a855f7,0_0_30px_#a855f7] animate-[heatBlobMove_3s_linear_infinite_alternate]"></div>
+                 {/* Geometric Floating Nodes representing topography points */}
+                 <div className="absolute top-[30%] left-[20%] w-2 h-2 bg-purple-300 transform rotate-45 shadow-[0_0_10px_#d8b4fe] animate-pulse"></div>
+                 <div className="absolute top-[60%] left-[50%] w-3 h-3 bg-purple-400 transform rotate-45 shadow-[0_0_15px_#c084fc] animate-pulse" style={{animationDelay: '0.5s'}}></div>
+                 <div className="absolute top-[40%] left-[80%] w-2 h-2 bg-purple-300 transform rotate-45 shadow-[0_0_10px_#d8b4fe] animate-pulse" style={{animationDelay: '1s'}}></div>
+                 <svg className="absolute inset-0 w-full h-full text-purple-500/50 drop-shadow-[0_0_5px_#a855f7]">
+                      <path d="M 50 150 L 140 100 L 230 180" fill="none" stroke="currentColor" strokeWidth="2" />
+                 </svg>
+             </div>
+             
+             {/* Radiating beams */}
+             <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-48 h-32 bg-gradient-to-t from-purple-500/40 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000 delay-200 rounded-full mix-blend-screen"></div>
+          </div>
+
+          <div className="flex flex-col items-center justify-center z-10 w-full pointer-events-none">
+            <div className="card-icon-wrapper p-4 mb-4 bg-purple-500/10 rounded-2xl text-purple-400 transition-all duration-300 drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
+              <Mountain size={56}/>
+            </div>
+            <h3 className="text-3xl card-title text-purple-400 font-display font-bold tracking-wider transition-all duration-300 drop-shadow-[0_0_8px_rgba(168,85,247,0.4)] leading-tight">Landscape<br/>Analyser</h3>
           </div>
         </div>
 

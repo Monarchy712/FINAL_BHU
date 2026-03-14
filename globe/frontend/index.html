@@ -285,7 +285,7 @@
           
           <div class="field-group">
             <label class="field-label">Cycle Year</label>
-            <input type="number" id="year" class="sci-fi-input" value="1753" min="1753" max="2025">
+            <input type="number" id="year" class="sci-fi-input" value="1940" min="1850" max="2025">
           </div>
 
           <div class="field-group">
@@ -352,18 +352,36 @@
       viewer.imageryLayers.addImageryProvider(provider);
     });
 
+    const initialDate = Cesium.JulianDate.fromDate(new Date(Date.UTC(1940, 0, 1)));
+    viewer.clock.currentTime = initialDate;
+    viewer.clock.startTime = Cesium.JulianDate.fromDate(new Date(Date.UTC(1850, 0, 1)));
+    viewer.clock.stopTime = Cesium.JulianDate.fromDate(new Date(Date.UTC(2025, 11, 31)));
+    if (viewer.timeline) viewer.timeline.updateFromClock();
+
     let dynamicLayer;
     let lastSyncedDateString = "";
     let isFetching = false;
+    let lastClockDateStr = "";
 
     const syncDateToClock = () => {
       const time = viewer.clock.currentTime;
       const date = Cesium.JulianDate.toGregorianDate(time);
-      document.getElementById('year').value = date.year;
-      document.getElementById('month').value = date.month;
-      document.getElementById('day').value = date.day;
+      const currentClockDateStr = `${date.year}-${date.month}-${date.day}`;
       
-      const dateStr = `${date.year}-${date.month}-${date.day}`;
+      const yearInput = document.getElementById('year');
+      const monthInput = document.getElementById('month');
+      const dayInput = document.getElementById('day');
+      
+      if (currentClockDateStr !== lastClockDateStr) {
+        if (document.activeElement !== yearInput && document.activeElement !== monthInput && document.activeElement !== dayInput) {
+          yearInput.value = date.year;
+          monthInput.value = date.month;
+          dayInput.value = date.day;
+          lastClockDateStr = currentClockDateStr;
+        }
+      }
+      
+      const dateStr = currentClockDateStr;
       if (dateStr !== lastSyncedDateString && !isFetching && viewer.clock.shouldAnimate) {
         triggerSync(date.year, date.month, date.day);
       }
@@ -421,7 +439,7 @@
       const d = document.getElementById('day').value;
       
       // Update clock to match input values
-      const targetDate = Cesium.JulianDate.fromDate(new Date(y, m-1, d));
+      const targetDate = Cesium.JulianDate.fromDate(new Date(Date.UTC(y, m-1, d)));
       viewer.clock.currentTime = targetDate;
       if (viewer.timeline) viewer.timeline.updateFromClock();
       
@@ -438,7 +456,7 @@
     });
 
     // Initial sync
-    triggerSync(1753, 1, 1);
+    triggerSync(1940, 1, 1);
   </script>
 
 </body>
