@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: final-bhu-globe
+    runtime: docker
+    plan: free
+    region: ohio # You can change this
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false # Required: Must be set in the Render dashboard
+      - key: PORT
+        value: 8000
+    healthCheckPath: /health
+    # Render will automatically use the Dockerfile at the root
