@@ -1,6 +1,8 @@
 <div align="center">
 
 # 🌐 Technex Hackathon — IIT (BHU) Varanasi
+ **Youtube Video link for you project overview:** 
+https://youtu.be/ubkq3JCjsDA
 
 **The official hackathon website for Technex, the annual techno-management fest of IIT (BHU) Varanasi.**
 
@@ -13,8 +15,7 @@
 </div>
 
 ---
-## Youtube Video link for you project overview: 
-https://youtu.be/ubkq3JCjsDA
+
 ## 📌 Overview
 
 
