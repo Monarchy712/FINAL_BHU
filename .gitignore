@@ -31,7 +31,8 @@ dist-ssr/
 .env.*
 
 # Project specific
-globe/backend/temperature.nc
-globe/backend/all3.nc
-globe/backend/all.nc
+*.nc
 globe/backend/static/tiles/*
+globe/backend/static/forecasts/*
+node_modules/
+dist/
