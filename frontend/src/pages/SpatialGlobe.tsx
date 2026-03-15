@@ -16,6 +16,7 @@ interface CityData {
   pressure: number;
   precip: number;
   ml_cluster?: number;
+  __isHovered?: boolean;
 }
 
 function getColor(city: CityData, activeMetric: MetricType): string {
@@ -57,7 +58,7 @@ export default function SpatialGlobe() {
   const MIN_YEAR = 1940;
   const MAX_YEAR = 2023;
 
-  const fetchData = useCallback(async (year: number, metric: MetricType) => {
+  const fetchData = useCallback(async (year: number, _metric: MetricType) => {
     setFetching(true);
     const backendHost = window.location.hostname;
     try {
