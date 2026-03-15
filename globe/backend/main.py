@@ -285,6 +285,11 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+# Endpoint for frontend to fetch city list (name, lat, lon)
+@app.get("/cities-list")
+def get_cities_list():
+    return {"cities": CITIES}
+
 # Serve static files
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 os.makedirs(os.path.join(static_dir, "tiles"), exist_ok=True)
