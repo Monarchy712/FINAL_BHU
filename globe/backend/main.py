@@ -312,6 +312,20 @@ app.add_middleware(
 def get_cities_list():
     return {"cities": CITIES}
 
+# Diagnostic endpoint
+@app.get("/api/debug-status")
+def debug_status():
+    return {
+        "groq_api_key_set": bool(GROQ_API_KEY),
+        "temperature_nc_exists": os.path.exists("./temperature.nc"),
+        "all3_nc_exists": os.path.exists("./all3.nc"),
+        "all_nc_exists": os.path.exists("./all.nc"),
+        "global_weather_csv_exists": os.path.exists(CSV_SIMILARITY_PATH),
+        "spatial_interpolator_loaded": spatial_interpolator is not None,
+        "precip_interpolator_loaded": precip_interpolator is not None,
+        "has_forecast_module": HAS_FORECAST
+    }
+
 # Serve static files
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 os.makedirs(os.path.join(static_dir, "tiles"), exist_ok=True)
@@ -533,6 +547,9 @@ async def generate_tour(body: TourRequest):
     location = body.location.strip()
     description = body.description.strip()
 
+    if not GROQ_API_KEY:
+        raise HTTPException(status_code=500, detail="GROQ_API_KEY is missing. Please set it in Railway environment variables.")
+
     if not location or not description:
         raise HTTPException(status_code=400, detail="location and description are required.")
 
@@ -624,7 +641,8 @@ Rules:
     # ── Step 2: Parse JSON ────────────────────────────────────────────────────
     json_match = re.search(r"\{[\s\S]*\}", raw_content)
     if not json_match:
-        raise HTTPException(status_code=500, detail="Failed to parse AI response. Please try again.")
+        print(f"No JSON found in Groq response: {raw_content}")
+        raise HTTPException(status_code=500, detail="AI returned a non-JSON response. Please try narrowing your request.")
 
     try:
         parsed = json.loads(json_match.group())
@@ -652,7 +670,7 @@ Rules:
             cities.append({"name": item["name"], "paragraph": item["paragraph"], **coords})
 
     if not cities:
-        raise HTTPException(status_code=500, detail="Could not geocode any cities. Please try again.")
+        raise HTTPException(status_code=500, detail=f"Could not geocode the cities suggested by AI ({', '.join(c['name'] for c in city_items)}). This might be a temporary network issue.")
 
     print("Cities resolved:", ", ".join(c["name"] for c in cities))
     print("✅ Tour generation complete.")
@@ -668,6 +686,9 @@ Rules:
 async def generate_story(body: StoryRequest):
     location = body.location.strip()
     date_str  = body.date.strip()
+
+    if not GROQ_API_KEY:
+        raise HTTPException(status_code=500, detail="GROQ_API_KEY is missing. Please set it in Railway environment variables.")
 
     if not location or not date_str:
         raise HTTPException(status_code=400, detail="location and date are required.")
