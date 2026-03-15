@@ -758,7 +758,7 @@ async def generate_story(body: StoryRequest):
 
 
 # Serving the built frontend
-frontend_dist = os.path.join(os.path.dirname(__file__), "..", "frontend", "dist")
+frontend_dist = os.path.join(os.path.dirname(__file__), "..", "frontend")
 if not os.path.exists(frontend_dist):
     frontend_dist = os.path.join(os.path.dirname(__file__), "static") # Fallback to internal static
 

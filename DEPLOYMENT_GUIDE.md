@@ -28,7 +28,10 @@ git push -u origin main
 1. Log in to your [Railway Dashboard](https://railway.app/dashboard).
 2. Click **+ New Project** > **Deploy from GitHub repo**.
 3. Select your repository.
-4. Railway will automatically detect the `railway.json` and start the build process.
+4. Railway will automatically detect the **Dockerfile** and start the build process.
+
+> [!NOTE]
+> I have switched the deployment to use a **Dockerfile**. This ensures that both your React frontend and FastAPI backend are built correctly and linked together in the production image.
 
 ## Step 4: Configure Environment Variables
 In the Railway dashboard, go to the **Variables** tab for your service and add:
