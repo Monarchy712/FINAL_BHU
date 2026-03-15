@@ -5,8 +5,11 @@ httpx
 python-dotenv
 pydantic
 xarray
+netcdf4
 numpy
 pandas
 matplotlib
+scipy
 scikit-learn
-scikit-learn
+prophet
+holidays
