@@ -16,8 +16,19 @@
 
 ## 📌 Overview
 
-This repository contains the full-stack **hackathon website** for **Technex, IIT (BHU) Varanasi** — designed to onboard participants, showcase problem statements, and deliver an immersive event experience. The platform features an interactive globe visualization, a predictive analytics module, and a polished responsive frontend built for hackers and teams registering across the country.
 
+This is the hackathon project built for **Technex, IIT (BHU) Varanasi**  a climate intelligence platform that combines time series forecasting with rich, interactive data visualization to make sense of our changing planet.
+
+At its core, the platform predicts climate data using machine learning-powered time series models and brings those predictions to life through dynamic graphs and interactive animations. The centerpiece is an **interactive 3D globe** that renders global climate heatmaps in real time, letting users literally spin the Earth and watch climate patterns unfold across regions.
+
+Beyond the globe, the platform offers three powerful analytical tools:
+- 🏔️ **Landscape Analyzer** — examine climate behavior across different terrain and geographic regions
+- 🔮 **Future Predictor** — project climate trends forward using forecasting models, giving a data-driven glimpse into what lies ahead
+- 🗺️ **Intensity Map** — visualize the severity and distribution of climate events across the world
+
+The platform is thoughtfully split into **two distinct experiences** — one tailored for **researchers** who need depth, raw data, and analytical precision, and another for **enthusiasts** who want an accessible, visually engaging way to explore climate change without the technical overhead.
+
+It's built to be as informative as it is beautiful — because understanding the climate crisis shouldn't require a PhD.
 ---
 
 ## 🗂️ Project Structure
