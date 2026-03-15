@@ -288,7 +288,7 @@ export default function Cities() {
     setErrorMsg('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/similarity', {
+      const response = await fetch('/api/similarity', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

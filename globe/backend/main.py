@@ -19,6 +19,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
+from sklearn.preprocessing import StandardScaler
 from ml_utils import apply_climate_clustering, ClimateInterpolator
 try:
     from forecast import run_forecast
@@ -48,6 +49,9 @@ class TourRequest(BaseModel):
 class StoryRequest(BaseModel):
     location: str
     date: str  # YYYY-MM-DD
+
+class SimilarityRequest(BaseModel):
+    city: str
 
 # ─────────────────────────────────────────────────────────────────────────────
 #  STORY MODE: pre-stored phrase lookup tables
@@ -763,6 +767,104 @@ async def generate_story(body: StoryRequest):
     print("✅ Story generated.")
     return {"story": story, "meta": meta}
 
+# ─────────────────────────────────────────────────────────────────────────────
+#  CITIES SIMILARITY endpoint (Migrated from legacy Flask service)
+# ─────────────────────────────────────────────────────────────────────────────
+
+CSV_SIMILARITY_PATH = os.path.join(os.path.dirname(__file__), "data", "GlobalWeatherRepository.csv")
+
+@app.post("/api/similarity")
+def get_similar_cities(body: SimilarityRequest):
+    target_city = body.city.strip()
+    
+    if not os.path.exists(CSV_SIMILARITY_PATH):
+        # Fallback to absolute path check if relative fails
+        fallback_path = "c:\\Users\\samya\\OneDrive\\Desktop\\Technex2\\FINAL_BHU\\globe\\backend\\data\\GlobalWeatherRepository.csv"
+        if os.path.exists(fallback_path):
+             csv_use = fallback_path
+        else:
+             return {"error": "invalid input", "message": "Dataset not found"}
+    else:
+        csv_use = CSV_SIMILARITY_PATH
+
+    try:
+        df = pd.read_csv(csv_use)
+        feature_cols = [
+            'temperature_celsius', 
+            'precip_mm',
+            'humidity', 
+            'pressure_mb',
+            'wind_kph',
+            'air_quality_PM2.5'
+        ]
+        weights = {
+            'temperature_celsius': 6.0,
+            'precip_mm': 5.0,
+            'humidity': 4.0,
+            'pressure_mb': 3.0,
+            'wind_kph': 1.5,
+            'air_quality_PM2.5': 0.5
+        }
+
+        grouped = df.groupby(['location_name', 'country']).mean(numeric_only=True).reset_index()
+        available_cols = [c for c in feature_cols if c in grouped.columns]
+        grouped = grouped.dropna(subset=available_cols)
+
+        target_city_lower = target_city.lower()
+        source_row = None
+        source_idx = -1
+        
+        for i, row in grouped.iterrows():
+            if target_city_lower in str(row['location_name']).lower():
+                source_row = row
+                source_idx = i
+                break
+                
+        if source_row is None:
+            return {"error": "invalid input", "message": "City not found in dataset"}
+
+        scaler = StandardScaler()
+        scaled_features = scaler.fit_transform(grouped[available_cols])
+        weighted_features = scaled_features.copy()
+        for i, col in enumerate(available_cols):
+            weighted_features[:, i] *= weights.get(col, 1.0)
+
+        target_features = weighted_features[source_idx]
+        similarities = []
+        
+        for i, row in grouped.iterrows():
+            if i == source_idx:
+                continue
+                
+            dist_sq = np.sum((weighted_features[i] - target_features) ** 2)
+            distance = np.sqrt(dist_sq)
+            sim = 100 * np.exp(-distance / 3.0)
+            
+            similarities.append({
+                "city": row['location_name'],
+                "country": row['country'],
+                "sim": round(float(sim), 1),
+                "temp": round(row['temperature_celsius'], 1),
+                "pressure": round(row['pressure_mb'], 1),
+                "humidity": round(row['humidity'], 0),
+                "wind": round(row['wind_kph'], 1)
+            })
+
+        similarities.sort(key=lambda x: x['sim'], reverse=True)
+        top_5 = similarities[:5]
+        
+        return {
+            "source": {
+                 "city": source_row['location_name'],
+                 "country": source_row['country']
+            },
+            "results": top_5
+        }
+    except Exception as e:
+        print(f"Similarity error: {e}")
+        return {"error": "processing_error", "message": str(e)}
+
+
 
 # Serving the legacy Cesium globe
 legacy_globe = os.path.join(os.path.dirname(__file__), "..", "frontend")
@@ -777,4 +879,3 @@ if not os.path.exists(frontend_dist):
      frontend_dist = os.path.join(os.path.dirname(__file__), "..", "frontend") 
 
 app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
-```

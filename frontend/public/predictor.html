@@ -370,7 +370,7 @@
     // Load cities
     async function loadCities() {
       try {
-        const res = await fetch('http://localhost:8001/cities-list');
+        const res = await fetch('/cities-list');
         const data = await res.json();
         
         data.cities.sort((a, b) => a.name.localeCompare(b.name)).forEach(city => {
@@ -412,7 +412,7 @@
       loadingState.style.display = 'flex';
 
       try {
-        const response = await fetch('http://localhost:8001/forecast', {
+        const response = await fetch('/forecast', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ lat, lon, years })
