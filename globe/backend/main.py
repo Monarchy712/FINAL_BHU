@@ -20,7 +20,14 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 from ml_utils import apply_climate_clustering, ClimateInterpolator
-from forecast import run_forecast
+try:
+    from forecast import run_forecast
+    HAS_FORECAST = True
+except ImportError as e:
+    print(f"WARNING: Forecast module could not be loaded (missing dependencies?): {e}")
+    HAS_FORECAST = False
+    def run_forecast(*args, **kwargs):
+        return {"error": "Forecast module not available on this server (missing dependencies like 'prophet')."}
 
 load_dotenv()
 
@@ -757,9 +764,17 @@ async def generate_story(body: StoryRequest):
     return {"story": story, "meta": meta}
 
 
-# Serving the built frontend
-frontend_dist = os.path.join(os.path.dirname(__file__), "..", "frontend")
+# Serving the legacy Cesium globe
+legacy_globe = os.path.join(os.path.dirname(__file__), "..", "frontend")
+if os.path.exists(legacy_globe):
+    app.mount("/legacy-globe", StaticFiles(directory=legacy_globe, html=True), name="legacy-globe")
+
+# Serving the built React frontend
+# In Docker: legacy is at /app/globe/frontend, built React is at /app/dist
+frontend_dist = os.path.join(os.path.dirname(__file__), "..", "..", "dist")
 if not os.path.exists(frontend_dist):
-    frontend_dist = os.path.join(os.path.dirname(__file__), "static") # Fallback to internal static
+     # Fallback for local dev if paths are different (e.g. built into globe/frontend)
+     frontend_dist = os.path.join(os.path.dirname(__file__), "..", "frontend") 
 
 app.mount("/", StaticFiles(directory=frontend_dist, html=True), name="frontend")
+```

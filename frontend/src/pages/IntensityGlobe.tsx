@@ -32,7 +32,7 @@ export default function IntensityGlobe() {
 
       {/* Embedded Original Cesium Globe */}
       <iframe 
-        src={`http://${window.location.hostname}:8001/`}
+        src="/legacy-globe/"
         className="w-full h-full border-none relative z-20"
         onLoad={() => setLoading(false)}
         title="Cesium Intensity Globe"

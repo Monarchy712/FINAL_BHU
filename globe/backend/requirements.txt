@@ -1,15 +1,22 @@
+# Core API
 fastapi
 uvicorn
 groq
 httpx
 python-dotenv
 pydantic
-xarray
-netcdf4
+
+# Data & ML
 numpy
 pandas
-matplotlib
+xarray
+netcdf4
 scipy
+matplotlib
 scikit-learn
+
+# Forecasting (Requires heavy native builds)
 prophet
 holidays
+cmdstanpy
+tqdm

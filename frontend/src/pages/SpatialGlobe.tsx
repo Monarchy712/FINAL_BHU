@@ -60,9 +60,8 @@ export default function SpatialGlobe() {
 
   const fetchData = useCallback(async (year: number, _metric: MetricType) => {
     setFetching(true);
-    const backendHost = window.location.hostname;
     try {
-      const response = await fetch(`http://${backendHost}:8001/city_data_spatial?year=${year}`);
+      const response = await fetch(`/city_data_spatial?year=${year}`);
       const data = await response.json();
       setCities(data.cities || []);
     } catch (error) {

@@ -15,7 +15,7 @@ export default function GuidedTourPage() {
     setTourStage('loading');
 
     try {
-      const res = await fetch("http://localhost:8001/generate-tour", {
+      const res = await fetch("/generate-tour", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ location, description }),
