@@ -685,7 +685,7 @@ async def generate_story(body: StoryRequest):
 
     # Step 4: Build story phrases
     season_label = _SEASON_LABELS.get(month, "that time of year")
-    title_date   = parsed_date.strftime("%-d %B %Y")   # e.g. "15 July 1995"
+    title_date   = parsed_date.strftime("%#d %B %Y")   # e.g. "15 July 1995"
 
     story = {
         "title":    location,

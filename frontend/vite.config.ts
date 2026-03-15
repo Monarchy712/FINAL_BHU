@@ -6,12 +6,30 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/generate-story':    'http://localhost:8001',
-      '/generate-tour':     'http://localhost:8001',
-      '/generate_image':    'http://localhost:8001',
-      '/city_data':         'http://localhost:8001',
-      '/city_data_spatial': 'http://localhost:8001',
-      '/static':            'http://localhost:8001',
+      '/generate-story': {
+        target: 'http://localhost:8001',
+        changeOrigin: true,
+      },
+      '/generate-tour': {
+        target: 'http://localhost:8001',
+        changeOrigin: true,
+      },
+      '/generate_image': {
+        target: 'http://localhost:8001',
+        changeOrigin: true,
+      },
+      '/city_data': {
+        target: 'http://localhost:8001',
+        changeOrigin: true,
+      },
+      '/city_data_spatial': {
+        target: 'http://localhost:8001',
+        changeOrigin: true,
+      },
+      '/static': {
+        target: 'http://localhost:8001',
+        changeOrigin: true,
+      },
     }
   }
 })
