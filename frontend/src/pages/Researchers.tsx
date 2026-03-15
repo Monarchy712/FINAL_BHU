@@ -348,9 +348,10 @@ export default function Researchers() {
 
         {/* 4. AI Climate Forecast (Network Float Pop-out) */}
         <div 
-          className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto"
+          className="group holo-card relative w-[320px] h-[400px] flex flex-col justify-center items-center text-center mx-auto cursor-pointer"
           onMouseEnter={() => setActiveHover('forecast')}
           onMouseLeave={() => setActiveHover(null)}
+          onClick={() => window.location.href = '/predictor.html'}
         >
           
           {/* POP-OUT ELEMENT */}

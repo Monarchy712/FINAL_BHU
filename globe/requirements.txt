@@ -6,3 +6,6 @@ matplotlib
 numpy
 netcdf4
 scikit-learn
+httpx
+groq
+python-dotenv

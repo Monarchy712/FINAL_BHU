@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Predictor | Celestial Climate Explorer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ─── BASE DESIGN SYSTEM (SPACE THEME) ───────────────────── */
+    :root {
+      --bg-deep:   #010206;
+      --accent-main: #00d4ff;   /* Neon Cyan */
+      --accent-secondary: #0072ff; /* Tech Blue */
+      --accent-glow: rgba(0, 212, 255, 0.25);
+      --text-main:  #f0f9ff;
+      --text-dim:   #94a3b8;
+      --glass:      rgba(255, 255, 255, 0.03);
+      --glass-edge: rgba(255, 255, 255, 0.06);
+      --radius:     16px;
+      --transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; outline: none; }
+    
+    body, html {
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    /* ─── SPACE BACKGROUND ────────────────────────── */
+    .space-bg {
+      position: fixed; inset: 0; z-index: -1;
+      background: radial-gradient(circle at 50% 50%, #050a1e 0%, #010206 100%);
+    }
+
+    .stars-overlay {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(white 1px, transparent 1px);
+      background-size: 150px 150px;
+      opacity: 0.05;
+    }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────── */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--glass-edge);
+      padding-bottom: 20px;
+    }
+
+    .title-area h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(to right, #fff, var(--accent-main));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-area p {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      margin-top: 4px;
+    }
+
+    .btn-back {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 8px 16px;
+      border: 1px solid var(--glass-edge);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background: var(--glass);
+      color: var(--text-main);
+      border-color: var(--accent-main);
+    }
+
+    /* ─── FORECAST PANELS ───────────────────────────────────── */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    @media (max-width: 800px) {
+      .content-grid { grid-template-columns: 1fr; }
+    }
+
+    .config-panel {
+      background: var(--glass);
+      backdrop-filter: blur(30px);
+      border-radius: var(--radius);
+      border: 1px solid var(--glass-edge);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .panel-header {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field-label {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sci-fi-input {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--glass-edge);
+      border-radius: 10px;
+      padding: 14px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .sci-fi-input:focus {
+      background: rgba(0, 212, 255, 0.05);
+      border-color: var(--accent-main);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+
+    .btn-warp {
+      background: linear-gradient(135deg, var(--accent-main), var(--accent-secondary));
+      color: #010206;
+      border: none;
+      padding: 18px;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 114, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn-warp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+      filter: brightness(1.1);
+    }
+    
+    .btn-warp:active { transform: translateY(1px); }
+    .btn-warp:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; filter: grayscale(1); }
+
+    /* ─── RESULTS PANEL ─────────────────────────────────────── */
+    .results-panel {
+      background: var(--glass);
+      backdrop-filter: blur(30px);
+      border-radius: var(--radius);
+      border: 1px solid var(--glass-edge);
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .empty-state {
+      text-align: center;
+      color: var(--text-dim);
+    }
+    
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+      opacity: 0.5;
+    }
+
+    .loading-state {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      color: var(--accent-main);
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(0, 212, 255, 0.1);
+      border-radius: 50%;
+      border-top-color: var(--accent-main);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .result-image {
+      display: none;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      background: #f8f9fa; /* Plotly/matplotlib default background match */
+      border: 1px solid var(--glass-edge);
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .error-msg {
+      display: none;
+      color: #ff4444;
+      background: rgba(255, 68, 68, 0.1);
+      border: 1px solid rgba(255, 68, 68, 0.3);
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="space-bg"><div class="stars-overlay"></div></div>
+
+  <div class="container">
+    <header class="app-header">
+      <div class="title-area">
+        <h1>Predictive Climate Engine</h1>
+        <p>Time-Series Extrapolation Model (Prophet)</p>
+      </div>
+      <a href="index.html" class="btn-back">← Return to Globe</a>
+    </header>
+
+    <main class="content-grid">
+      <!-- Controls -->
+      <aside class="config-panel">
+        <div class="panel-header">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Coordinates
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="lat">Latitude (-90 to 90)</label>
+          <input type="number" id="lat" class="sci-fi-input" value="28.61" step="0.01">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="lon">Longitude (-180 to 180)</label>
+          <input type="number" id="lon" class="sci-fi-input" value="77.21" step="0.01">
+        </div>
+        
+        <div class="field-group" style="margin-top: 10px;">
+          <label class="field-label" for="years">Forecast Horizon (Years)</label>
+          <input type="number" id="years" class="sci-fi-input" value="5" min="1" max="20">
+        </div>
+
+        <button id="predictBtn" class="btn-warp">
+          <span id="btnText">Initialize Forecast</span>
+        </button>
+      </aside>
+
+      <!-- Results View -->
+      <section class="results-panel">
+        
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon">🌍</div>
+          <h3>Awaiting Coordinates</h3>
+          <p style="font-size: 0.85rem; margin-top: 8px;">Enter a location and initialize the time-series model to project future climate trajectories.</p>
+        </div>
+
+        <div id="loadingState" class="loading-state">
+          <div class="spinner"></div>
+          <div style="font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem;">
+            Extrapolating Time-Series...
+          </div>
+          <p style="color: var(--text-dim); font-size: 0.75rem;">Fitting Prophet Model (This takes ~5-15 seconds)</p>
+        </div>
+
+        <div id="errorState" class="error-msg"></div>
+
+        <img id="resultImg" class="result-image" src="" alt="Climate Forecast Plot">
+
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const btn = document.getElementById('predictBtn');
+    const btnText = document.getElementById('btnText');
+    const emptyState = document.getElementById('emptyState');
+    const loadingState = document.getElementById('loadingState');
+    const errorState = document.getElementById('errorState');
+    const resultImg = document.getElementById('resultImg');
+
+    btn.addEventListener('click', async () => {
+      const lat = parseFloat(document.getElementById('lat').value);
+      const lon = parseFloat(document.getElementById('lon').value);
+      const years = parseInt(document.getElementById('years').value, 10);
+
+      if (isNaN(lat) || isNaN(lon) || isNaN(years)) {
+        showError("Please enter valid numbers for Latitude, Longitude, and Years.");
+        return;
+      }
+
+      // UI updates for loading
+      btn.disabled = true;
+      btnText.innerText = "Processing...";
+      emptyState.style.display = 'none';
+      errorState.style.display = 'none';
+      resultImg.style.display = 'none';
+      loadingState.style.display = 'flex';
+
+      try {
+        const response = await fetch('http://localhost:8001/forecast', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ lat, lon, years })
+        });
+
+        const data = await response.json();
+
+        if (data.status === 'success') {
+          // Success: show image
+          resultImg.src = data.image_url + "?t=" + new Date().getTime(); // cache-bust
+          // Wait for image to load before displaying
+          resultImg.onload = () => {
+            loadingState.style.display = 'none';
+            resultImg.style.display = 'block';
+            resetBtn();
+          };
+        } else {
+          // Backend returned error
+          showError("Model Error: " + data.message);
+        }
+      } catch (err) {
+        showError("Network Error: Could not connect to the Prediction Engine API.");
+      }
+    });
+
+    function showError(msg) {
+      loadingState.style.display = 'none';
+      resultImg.style.display = 'none';
+      errorState.innerText = msg;
+      errorState.style.display = 'block';
+      resetBtn();
+    }
+
+    function resetBtn() {
+      btn.disabled = false;
+      btnText.innerText = "Initialize Forecast";
+    }
+  </script>
+</body>
+</html>

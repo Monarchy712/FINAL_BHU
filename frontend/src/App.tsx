@@ -8,6 +8,7 @@ import BackgroundEffects from './components/BackgroundEffects';
 import Researchers from './pages/Researchers';
 import Enthusiasts from './pages/Enthusiasts';
 import GuidedTourPage from './pages/GuidedTourPage';
+import StoryMode from './pages/StoryMode';
 import SpatialGlobe from './pages/SpatialGlobe';
 import IntensityGlobe from './pages/IntensityGlobe';
 import Cities from './pages/Cities';
@@ -98,6 +99,18 @@ function App() {
               className="relative z-50 w-full h-screen"
             >
               <GuidedTourPage />
+            </motion.div>
+          } />
+          <Route path="/enthusiasts/story" element={
+            <motion.div
+              key="story-mode"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative z-50"
+            >
+              <StoryMode />
             </motion.div>
           } />
           <Route path="/spatial" element={

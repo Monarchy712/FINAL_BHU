@@ -132,6 +132,45 @@ class ClimateInterpolator:
         self._result_cache[cache_key] = result
         return result
 
+    def get_monthly_profile(self, lat, lon, year, var_name):
+        """Return a list of 12 monthly mean values for the given year/location/variable."""
+        # Find pre-sliced city data
+        ds_city = None
+        for (clat, clon), sliced_ds in self._pre_sliced_ds.items():
+            dist = (clat - lat)**2 + (clon - lon)**2
+            if dist < 0.0001:
+                ds_city = sliced_ds
+                break
+
+        if ds_city is None:
+            ds_city = self.ds.sel(latitude=lat, longitude=lon, method="nearest")
+
+        times = pd.to_datetime(ds_city.valid_time.values)
+        year_mask = (times.year == year)
+        raw_data = ds_city[var_name].values
+
+        monthly = []
+        for m in range(1, 13):
+            month_mask = year_mask & (times.month == m)
+            vals = raw_data[month_mask]
+            vals = vals[~np.isnan(vals)]
+            if len(vals) > 0:
+                monthly.append(float(np.mean(vals)))
+            else:
+                # Fall back to Ridge prediction for this month
+                model = self._get_model(lat, lon, var_name)
+                if model is not None:
+                    std_year = (year - 1996) / 30.0
+                    X_pred = np.array([[
+                        np.sin(2 * np.pi * m / 12),
+                        np.cos(2 * np.pi * m / 12),
+                        std_year
+                    ]])
+                    monthly.append(float(model.predict(X_pred)[0]))
+                else:
+                    monthly.append(0.0)
+        return monthly
+
 def apply_climate_clustering(cities_data):
     if not cities_data or len(cities_data) < 3:
         return cities_data

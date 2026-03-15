@@ -20,6 +20,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.colors import LinearSegmentedColormap
 from ml_utils import apply_climate_clustering, ClimateInterpolator
+from forecast import run_forecast
 
 load_dotenv()
 
@@ -35,6 +36,132 @@ groq_client = AsyncGroq(api_key=GROQ_API_KEY)
 class TourRequest(BaseModel):
     location: str
     description: str
+
+# --- Request model for Story Mode ---
+class StoryRequest(BaseModel):
+    location: str
+    date: str  # YYYY-MM-DD
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  STORY MODE: pre-stored phrase lookup tables
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Temperature phrases (keyed by tier: 0=extreme cold … 6=extreme heat)
+_TEMP_PHRASES = [
+    "The air bites with a deep, bone-chilling cold — the kind that turns every breath into a small cloud and keeps the world wrapped in frost.",
+    "A bitter chill hangs over everything, layers of clothing feel barely enough, and every gust of wind is an unwelcome reminder of winter's grip.",
+    "Pleasantly cool with a crisp edge — perfect sweater weather, where the air feels refreshing and the world smells clean.",
+    "Mild and comfortable, with temperatures sitting right in that sweet spot where neither coat nor fan is needed.",
+    "Warm enough to feel the sun on your skin all day, the kind of heat that invites afternoon naps in the shade.",
+    "Quite hot and muggy — steps slow down naturally, shade becomes precious, and cold drinks disappear fast.",
+    "An oppressive, scorching heat — the pavement shimmers, the sky feels heavy, and venturing outside without protection is simply unwise.",
+]
+
+def _temp_tier(temp_c: float) -> int:
+    """Map °C to a 0–6 tier index."""
+    if temp_c < -10:   return 0
+    if temp_c < 0:     return 1
+    if temp_c < 10:    return 2
+    if temp_c < 18:    return 3
+    if temp_c < 26:    return 4
+    if temp_c < 34:    return 5
+    return 6
+
+# Precipitation phrases (keyed by tier: 0=arid … 5=extreme wet)
+_PRECIP_PHRASES = [
+    "The skies are bone-dry — not a cloud dares to linger, and the earth has clearly gone weeks without so much as a drizzle.",
+    "Rainfall is scarce and occasional at best, leaving the landscape parched and dusty under a relentless open sky.",
+    "An average amount of moisture in the air — the odd shower passes through, but nothing remarkable either way.",
+    "Noticeably wet, with regular rainfall keeping the ground damp and the air carrying that fresh, earthy petrichor.",
+    "Heavy rains are frequent — streets can flood by afternoon, umbrellas live in bags, and the world smells permanently of damp soil.",
+    "The skies open relentlessly — an almost tropical deluge, where the rain isn't so much falling as pouring in curtains.",
+]
+
+def _precip_tier(precip_mm: float) -> int:
+    """Map annual mm to a 0–5 tier index."""
+    if precip_mm < 50:    return 0
+    if precip_mm < 200:   return 1
+    if precip_mm < 450:   return 2
+    if precip_mm < 700:   return 3
+    if precip_mm < 1000:  return 4
+    return 5
+
+# Pressure phrases (keyed by tier: 0=very low … 4=very high)
+_PRESSURE_PHRASES = [
+    "Atmospheric pressure is unusually low — the air feels thin and heavy at once, a classic harbinger of stormy weather rolling in.",
+    "Pressure is on the lower side, lending the air a restless, brooding quality — the kind of atmosphere that makes weather feel unpredictable.",
+    "Pressure sits right around the norm — the atmosphere feels settled, with no dramatic weather signals in either direction.",
+    "High pressure has settled in, bringing stable, clear conditions and a certain stillness to the air that feels almost imposed.",
+    "Very high pressure dominates — skies are brilliantly clear, the air is crisp and dry, and the weather is almost unnaturally calm and settled.",
+]
+
+def _pressure_tier(hpa: float) -> int:
+    """Map hPa to a 0–4 tier index."""
+    if hpa < 990:    return 0
+    if hpa < 1005:   return 1
+    if hpa < 1020:   return 2
+    if hpa < 1030:   return 3
+    return 4
+
+# Overall experience phrases — indexed as (temp_tier, precip_tier)
+# We compute a combined "outdoor experience" from the top two variables.
+_EXPERIENCE_PHRASES = {
+    # (temp_tier 0-1 = cold, precip 0-1 = dry)
+    (0, 0): "All told, stepping outside means braving a biting, dry cold — still and silent in a way that only deep winter can manage.",
+    (0, 1): "Cold and mostly dry, like a clear winter's morning that demands full winter gear and rewards you with a sharp, invigorating clarity.",
+    (0, 2): "Frigid and occasionally damp — a wintry mix where the chill seeps in from every direction.",
+    (0, 3): "Bitterly cold with persistent rain or sleet — the worst of both worlds, making outdoors thoroughly inhospitable.",
+    (0, 4): "Freezing rain and relentless wet — the streets are treacherous, the sky oppressive, and the outdoors best observed from a window.",
+    (0, 5): "An extreme combination of arctic cold and heavy precipitation — conditions that halt everything and demand shelter.",
+    (1, 0): "Cold and dry — the kind of weather where the air stings but at least stays honest. Good for a brisk walk if you dress for it.",
+    (1, 1): "Chilly and relatively dry, with an occasional shower to keep things interesting. Coat weather, definitely.",
+    (1, 2): "Cool with a decent chance of rain — carry an umbrella and dress in layers, and it's actually a pleasant enough day.",
+    (1, 3): "Cold and frequently wet — outdoor plans need commitment and waterproofing.",
+    (1, 4): "Raw and thoroughly wet, with heavy rain keeping temperatures feeling even lower than they are.",
+    (1, 5): "Cold and pounded by rain — unpleasant by any measure, a day spent mostly indoors.",
+    (2, 0): "Cool and dry, with a freshness to the air that makes even a short walk feel refreshing. Ideal conditions for most outdoor activities.",
+    (2, 1): "Pleasantly cool with minimal rain — a great day for a walk or a run, with the sky doing its best impression of behaving.",
+    (2, 2): "Mild and gently showery — the kind of weather that makes things green and smells like the earth is breathing.",
+    (2, 3): "Cool but wet — rain arrives regularly enough to be part of the day's rhythm rather than a surprise.",
+    (2, 4): "Crisp but drenched — the rain is a constant companion, turning paths into streams and making umbrellas a wardrobe essential.",
+    (2, 5): "Cool but relentlessly rainy — the air is fresh but the skies never quite let up.",
+    (3, 0): "Comfortable and dry — neither too hot nor too cold, with blue skies and a pleasant breeze. Frankly, ideal.",
+    (3, 1): "Mild and mostly dry — a good day by most measures, with only occasional clouds interrupting the calm.",
+    (3, 2): "Temperate with regular showers — pleasant between the rain, lively when it falls.",
+    (3, 3): "Warm and noticeably wet — the humidity starts to creep up, and the frequent rain keeps things lush.",
+    (3, 4): "Warm and very rainy — the kind of day where everything stays damp and the air smells perpetually of rain.",
+    (3, 5): "Mild temperatures but absolutely relentless rain — a monsoon-like persistence that keeps most people indoors.",
+    (4, 0): "Warm and gloriously dry — the sun has full reign here, and the outdoors rewards those who venture out with a golden, sun-soaked afternoon.",
+    (4, 1): "Warm with only light rain at most — pleasant, summery conditions with occasional relief from a passing cloud.",
+    (4, 2): "Warm and occasionally rainy — a comfortable heat with refreshing showers to keep things bearable.",
+    (4, 3): "Warm and frequently wet — the heat makes the rain feel almost tropical, steamy and lush.",
+    (4, 4): "Hot and perpetually rainy — oppressive in its humidity, with the heat making every raincloud feel like a small relief.",
+    (4, 5): "Warm temperatures lost under unrelenting rain — stepping outside means accepting that you will be soaked within minutes.",
+    (5, 0): "Hot and bone-dry — the sun is merciless, the air shimmers, and shade becomes the most valuable commodity around.",
+    (5, 1): "Hot with only rare relief from rain — long, punishing days under a heavy sun with little respite.",
+    (5, 2): "Hot and occasionally stormy — the heat builds until afternoon thunderstorms crash in, releasing tension as much as rain.",
+    (5, 3): "Hot and damp — a humid, sticky combination where sweating barely helps and the world feels wrapped in a warm, wet blanket.",
+    (5, 4): "Sweltering heat meets heavy rain — the air is thick and steamy, every surface damp, the outdoors both exhausting and drenching.",
+    (5, 5): "Extreme heat combined with near-constant rain — a tropical intensity that makes outdoor life a constant negotiation with the elements.",
+    (6, 0): "Scorching and arid — a furnace-like heat that bakes everything in sight. Sunscreen, water, and shade are non-negotiable survival tools.",
+    (6, 1): "Extreme heat with very little rain — the landscape bakes and cracks, and even the hardy seek shelter by midday.",
+    (6, 2): "Fiercely hot with occasional rains that evaporate almost before they hit the ground, doing little to relieve the oppressive heat.",
+    (6, 3): "Blistering heat paired with regular rain — a brutal tropical combination that makes the outdoors feel like a sauna at full blast.",
+    (6, 4): "Extreme heat and heavy, frequent rain — the rare, punishing conditions of a rainforest in high summer, overwhelming in every sense.",
+    (6, 5): "An almost elemental ferocity — the heat is extreme and the rains torrential, the kind of weather that simply commands respect and surrender.",
+}
+
+def _get_experience(temp_tier: int, precip_tier: int) -> str:
+    key = (temp_tier, min(precip_tier, 5))
+    return _EXPERIENCE_PHRASES.get(key, "A day that defies easy description — the elements conspire in unexpected ways, and only those who venture outside will truly know.")
+
+# Season names by month
+_SEASON_LABELS = {
+    12: "deep winter", 1: "deep winter", 2: "late winter",
+    3: "early spring", 4: "spring", 5: "late spring",
+    6: "early summer", 7: "midsummer", 8: "late summer",
+    9: "early autumn", 10: "autumn", 11: "late autumn",
+}
 
 # --- Geocode via Nominatim ---
 async def geocode_city(city_name: str) -> dict | None:
@@ -153,13 +280,33 @@ precip_interpolator.pre_slice_cities(CITIES)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )
 
 # Serve static files
-os.makedirs("./static/tiles", exist_ok=True)
-app.mount("/static", StaticFiles(directory="static"), name="static")
+static_dir = os.path.join(os.path.dirname(__file__), "static")
+os.makedirs(os.path.join(static_dir, "tiles"), exist_ok=True)
+os.makedirs(os.path.join(static_dir, "forecasts"), exist_ok=True)
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
+class ForecastRequest(BaseModel):
+    lat: float
+    lon: float
+    years: int = 5
+
+@app.post("/forecast")
+def generate_forecast(req: ForecastRequest):
+    try:
+        result = run_forecast(user_lat=req.lat, user_lon=req.lon, forecast_years=req.years)
+        plot_filename = os.path.basename(result["plot_path"])
+        static_url = f"http://localhost:8001/static/forecasts/{plot_filename}"
+        return {"status": "success", "image_url": static_url}
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        return {"status": "error", "message": str(e)}
 
 def generate_image_for_date(year: int, month: int, day: int) -> str:
     """
@@ -473,5 +620,110 @@ Rules:
     print("✅ Tour generation complete.")
 
     return {"cities": cities}
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  STORY MODE endpoint
+# ─────────────────────────────────────────────────────────────────────────────
+
+@app.post("/generate-story")
+async def generate_story(body: StoryRequest):
+    location = body.location.strip()
+    date_str  = body.date.strip()
+
+    if not location or not date_str:
+        raise HTTPException(status_code=400, detail="location and date are required.")
+
+    # Parse date
+    try:
+        parsed_date = pd.Timestamp(date_str)
+        year  = parsed_date.year
+        month = parsed_date.month
+    except Exception:
+        raise HTTPException(status_code=400, detail="date must be in YYYY-MM-DD format.")
+
+    print(f"\n📖 Story request — location: \"{location}\", date: {date_str}")
+
+    # Step 1: Geocode
+    coords = await geocode_city(location)
+    if not coords:
+        raise HTTPException(status_code=404, detail=f"Could not find location: {location}")
+
+    lat, lon = coords["lat"], coords["lng"]
+    print(f"   Resolved to lat={lat:.2f}, lon={lon:.2f}")
+
+    # Step 2: Extract climate values from ML interpolators
+    try:
+        # Temperature in °C (all3.nc  → t2m in Kelvin)
+        temp_k   = spatial_interpolator.get_annual_mean(lat, lon, year, "t2m")
+        temp_c   = round(temp_k - 273.15, 2)
+
+        # Surface pressure in hPa (all3.nc → sp in Pa)
+        pressure_pa  = spatial_interpolator.get_annual_mean(lat, lon, year, "sp")
+        pressure_hpa = round(pressure_pa / 100.0, 1) if pressure_pa > 0 else 1013.25
+
+        # Annual-equivalent precipitation in mm (all.nc → tp in metres/timestep, ERA5 monthly)
+        monthly_precip_m = precip_interpolator.get_monthly_profile(lat, lon, year, "tp")
+        # ERA5 tp is accumulated per timestep; sum all months × 1000 for mm/year equivalent
+        annual_precip_mm = sum(monthly_precip_m) * 1000.0
+
+    except Exception as e:
+        print(f"   Climate extraction error: {e}")
+        raise HTTPException(status_code=500, detail="Failed to extract climate data for this location/year.")
+
+    print(f"   temp={temp_c:.1f}°C  pressure={pressure_hpa:.0f}hPa  precip≈{annual_precip_mm:.0f}mm")
+
+    # Step 3: Compute tiers
+    t_tier = _temp_tier(temp_c)
+    p_tier = _precip_tier(annual_precip_mm)
+    pr_tier = _pressure_tier(pressure_hpa)
+
+    # Step 4: Build story phrases
+    season_label = _SEASON_LABELS.get(month, "that time of year")
+    title_date   = parsed_date.strftime("%-d %B %Y")   # e.g. "15 July 1995"
+
+    story = {
+        "title":    location,
+        "subtitle": f"{title_date} — {season_label}",
+        "chapters": [
+            {
+                "icon":    "🌡️",
+                "heading": "The Temperature",
+                "line":    _TEMP_PHRASES[t_tier],
+            },
+            {
+                "icon":    "🌧️",
+                "heading": "The Rain",
+                "line":    _PRECIP_PHRASES[p_tier],
+            },
+            {
+                "icon":    "🌬️",
+                "heading": "The Pressure",
+                "line":    _PRESSURE_PHRASES[pr_tier],
+            },
+            {
+                "icon":    "🌍",
+                "heading": "What it's like outside",
+                "line":    _get_experience(t_tier, p_tier),
+            },
+        ]
+    }
+
+    meta = {
+        "location": location,
+        "lat": round(lat, 4),
+        "lon": round(lon, 4),
+        "date": date_str,
+        "year": year,
+        "month": month,
+        "season": season_label,
+        "temp_tier": t_tier,
+        "precip_tier": p_tier,
+        "pressure_tier": pr_tier,
+    }
+
+    print("✅ Story generated.")
+    return {"story": story, "meta": meta}
+
 
 app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")

@@ -49,12 +49,17 @@ interface CardProps {
     active: boolean;
 }
 
-const StoryCard: React.FC<CardProps> = ({ onHover, active }) => (
+interface StoryCardProps extends CardProps {
+    onClick: () => void;
+}
+
+const StoryCard: React.FC<StoryCardProps> = ({ onHover, active, onClick }) => (
   <div
     className={`user-card user-card-story group ${active ? 'user-card-active' : ''}`}
     onMouseEnter={() => onHover('story')}
     onMouseLeave={() => onHover(null)}
-    style={{ transform: 'rotate(-5deg) translateY(10px)' }}
+    onClick={onClick}
+    style={{ transform: 'rotate(-5deg) translateY(10px)', cursor: 'pointer' }}
   >
     {/* Popout: 3D book with emerging elements */}
     <div className="story-popout-wrap">
@@ -281,7 +286,7 @@ export default function Enthusiasts() {
 
       {/* Diagonal card tray */}
       <div className="user-card-tray">
-        <StoryCard onHover={setHovered} active={hovered === 'story'} />
+        <StoryCard onHover={setHovered} active={hovered === 'story'} onClick={() => navigate('/enthusiasts/story')} />
         <TourCard  onHover={setHovered} active={hovered === 'tour'} onClick={() => navigate('/enthusiasts/guided_tour')} />
         <CityCard  onHover={setHovered} active={hovered === 'city'} onClick={() => navigate('/cities')} />
       </div>
